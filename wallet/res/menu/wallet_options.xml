@@ -86,6 +86,12 @@
         android:id="@+id/wallet_options_report_issue"
         android:showAsAction="never"
         android:title="@string/preferences_report_issue_title" />
+   <!-- donate -->
+    <item
+        android:id="@+id/wallet_options_donate"
+        android:showAsAction="never"
+        android:title="@string/wallet_options_donate" />
+    <!-- end -->
     <item
         android:id="@+id/wallet_options_help"
         android:orderInCategory="999"
