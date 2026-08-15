@@ -68,6 +68,12 @@
         android:id="@+id/wallet_options_sweep_wallet"
         android:showAsAction="never"
         android:title="@string/sweep_wallet_activity_title" />
+   <!-- Create paper wallet -->
+    <item
+        android:id="@+id/wallet_options_create_paper_wallet"
+        android:showAsAction="never"
+        android:title="@string/paper_wallet_activity_title" />
+    <!-- end -->
     <item
         android:id="@+id/wallet_options_network_monitor"
         android:showAsAction="never"
