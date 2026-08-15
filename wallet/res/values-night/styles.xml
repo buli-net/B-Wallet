@@ -52,4 +52,49 @@
         <item name="android:overlapAnchor">false</item>
         <item name="android:popupBackground">@color/bg_level3</item>
     </style>
+
+        <!-- fix theme setting-->
+    <style name="My.Preference" parent="@android:style/Theme.Material">
+    <item name="android:windowBackground">@color/bg_level1</item>
+    <item name="android:colorBackground">@color/bg_level1</item>
+    <item name="android:colorPrimary">@color/bg_action_bar</item>
+    <item name="android:colorPrimaryDark">@color/bg_action_bar</item>
+    <item name="android:statusBarColor">@color/bg_action_bar</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="android:actionBarStyle">@style/My.Preference.ActionBar</item>
+    <item name="android:actionBarTheme">@style/My.Preference.ActionBarTheme</item>
+
+    <item name="android:actionOverflowButtonStyle">@style/My.Widget.ActionButton.Overflow</item>
+    <item name="android:actionOverflowMenuStyle">@style/My.Widget.PopupMenu.Overflow</item>
+    <item name="android:actionButtonStyle">@style/My.Widget.ActionButton</item>
+    <item name="android:textViewStyle">@style/My.Widget.TextView</item>
+    <item name="android:editTextStyle">@style/My.Widget.EditText</item>
+    <item name="android:autoCompleteTextViewStyle">@style/My.Widget.AutoCompleteTextView</item>
+    <item name="android:checkboxStyle">@style/My.Widget.CompoundButton.CheckBox</item>
+    <item name="android:spinnerStyle">@style/My.Widget.Spinner</item>
+    <item name="android:popupMenuStyle">@style/My.Widget.PopupMenu</item>
+    
+</style>
+  
+<style name="My.Preference.ActionBarTheme" parent="@android:style/ThemeOverlay.Material.ActionBar">
+    <item name="android:colorControlNormal">@color/fg_on_dark_bg_network_significant</item>
+    <item name="android:textColorSecondary">@color/fg_on_dark_bg_network_significant</item>
+</style>
+  
+<style name="My.Preference.ActionBar" parent="@android:style/Widget.Material.Light.ActionBar.Solid">
+    <item name="android:background">@color/bg_action_bar</item>
+    <item name="android:titleTextStyle">@style/My.Preference.ActionBar.Title</item>
+    <item name="android:paddingLeft">@dimen/list_entry_padding_horizontal_cram</item>
+    <item name="android:paddingRight">@dimen/list_entry_padding_horizontal_cram</item>
+</style>
+    
+<style name="My.Preference.ActionBar.Title" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
+    <item name="android:textColor">@color/fg_on_dark_bg_network_significant</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    
+</style>
+    <!-- end fix theme setting -->
 </resources>
