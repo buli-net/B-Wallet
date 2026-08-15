@@ -1,0 +1,300 @@
+name: Build Bitcoin Wallet core v11 - CI Build
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04  # Stable for old AGP
+
+    steps:
+      # ------------------------------------------------------------------
+      # STEP 0: Print runner diagnostics
+      # Purpose: Capture kernel and UTC time for reproducible builds
+      # ------------------------------------------------------------------
+      - name: Print runner info
+        run: |
+          echo "=== RUNNER INFO ==="
+          uname -a
+          lsb_release -a
+          date -u
+          echo "Runner: $RUNNER_NAME"
+
+      # ------------------------------------------------------------------
+      # STEP 1: Checkout code
+      # fetch-depth: 0 = full history for exact commit SHA
+      # ------------------------------------------------------------------
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          clean: true
+
+      - name: Verify commit details
+        run: |
+          echo "=== GIT INFO ==="
+          git log -1 --pretty=full
+          git status
+          git rev-parse HEAD > commit.txt
+          echo "Commit saved to commit.txt"
+
+      # ------------------------------------------------------------------
+      # STEP 2: Setup Gradle with cache (MUST run before Java)
+      # - Enables Gradle User Home cache
+      # - Creates "Gradle Build Results" table in job summary
+      # - cache-cleanup: never avoids cleanup failure with Gradle 4.10.3
+      # ------------------------------------------------------------------
+      - name: Setup Gradle (cache + UI)
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          cache-cleanup: never
+          cache-read-only: false
+          gradle-home-cache-includes: |
+            caches
+            notifications
+          gradle-home-cache-excludes: |
+            caches/*/tmp
+          add-job-summary-as-pr-comment: never
+
+      # ------------------------------------------------------------------
+      # STEP 3: Setup Java 11 (Temurin)
+      # AGP 3.1.4 requires Java 8-11. Java 11 needed for Room processor
+      # cache: none - important to avoid conflict with setup-gradle
+      # ------------------------------------------------------------------
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '11'
+
+      - name: Verify Java
+        run: |
+          java -version
+          javac -version
+
+      # ------------------------------------------------------------------
+      # STEP 4: Install Android SDK 28 manually
+      # Avoid setup-android (pulls API 37 metadata that crashes AGP 3.1.4)
+      # Use old commandline-tools 7583922 from 2020
+      # ------------------------------------------------------------------
+      - name: Install Android SDK 28
+        run: |
+          export ANDROID_HOME=$HOME/android-sdk
+          mkdir -p $ANDROID_HOME/cmdline-tools
+          cd /tmp
+          wget -q https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
+          unzip -q commandlinetools-linux-7583922_latest.zip -d $ANDROID_HOME/cmdline-tools
+          mv $ANDROID_HOME/cmdline-tools/cmdline-tools $ANDROID_HOME/cmdline-tools/latest
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          mkdir -p $ANDROID_HOME/licenses
+          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $ANDROID_HOME/licenses/android-sdk-license
+          yes | sdkmanager --sdk_root=$ANDROID_HOME "platform-tools" "platforms;android-28" "build-tools;28.0.3"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "PATH=$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
+
+      - name: Verify SDK
+        run: |
+          ls -la $ANDROID_HOME
+          ls -la $ANDROID_HOME/platforms/android-28
+
+      # ------------------------------------------------------------------
+      # STEP 5: Patch SDK metadata for AGP 3.1.4
+      # AGP 3.1.4 uses old parser, fails on <api-level>XX.0</api-level>
+      # and <extension-level> tag. Remove ".0" and delete extension-level
+      # ------------------------------------------------------------------
+      - name: Patch SDK metadata
+        run: |
+          find $ANDROID_HOME -name package.xml -print
+          find $ANDROID_HOME -name package.xml -exec sed -i 's/\.0<\/api-level>/<\/api-level>/g' {} \;
+          find $ANDROID_HOME -name package.xml -exec sed -i '/extension-level/d' {} \;
+          find $ANDROID_HOME -name package.xml -exec grep api-level {} \;
+
+      # ------------------------------------------------------------------
+      # STEP 6: Create local.properties
+      # Gradle reads sdk.dir from this file
+      # ------------------------------------------------------------------
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          cat local.properties
+
+      # ------------------------------------------------------------------
+      # STEP 7: Ensure Gradle Wrapper 4.10.3
+      # AGP 3.1.4 only compatible with Gradle 4.6 - 4.10.3
+      # If wrapper missing, download Gradle 4.10.3 and create wrapper
+      # ------------------------------------------------------------------
+      - name: Setup Gradle wrapper
+        run: |
+          if [ ! -f ./gradlew ]; then
+            echo "Wrapper missing, creating..."
+            wget -q https://services.gradle.org/distributions/gradle-4.10.3-bin.zip
+            unzip -q gradle-4.10.3-bin.zip
+            ./gradle-4.10.3/bin/gradle wrapper --gradle-version 4.10.3 --distribution-type bin
+          else
+            echo "Wrapper exists"
+          fi
+          chmod +x gradlew
+          ./gradlew --version
+
+      # ------------------------------------------------------------------
+      # STEP 8: Build unsigned release APK
+      # Command: clean :wallet:assembleRelease -x lint
+      # - clean: remove old outputs
+      # - -x lint: skip lint (fails on old AGP)
+      # - unset NDK to avoid warnings
+      # ------------------------------------------------------------------
+      - name: Clean project
+        run: ./gradlew clean
+
+      - name: Build release APKs
+        run: |
+          unset ANDROID_NDK_HOME
+          unset NDK_HOME
+          ./gradlew :wallet:assembleRelease -x lint --stacktrace --info
+
+      # ------------------------------------------------------------------
+      # STEP 9: Collect APKs and generate pre-sign hashes
+      # Copy all release APKs to out/
+      # Create raw-sha256.txt for audit before signing
+      # ------------------------------------------------------------------
+      - name: Collect APKs
+        run: |
+          mkdir -p out
+          mkdir -p logs
+          find . -name "*.apk" -type f
+          find wallet/build/outputs/apk -name "*release*.apk" -exec cp -v {} out/ \;
+          ls -lh out/
+          du -sh out/
+          sha256sum out/*.apk > out/raw-sha256.txt
+          cat out/raw-sha256.txt
+
+      # ------------------------------------------------------------------
+      # STEP 10: Locate apksigner
+      # apksigner is in build-tools/28.0.3/
+      # Find latest and export to GITHUB_ENV
+      # ------------------------------------------------------------------
+      - name: Find apksigner
+        run: |
+          APK=$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -1)
+          echo "Found: $APK"
+          echo "APKSIGNER=$APK" >> $GITHUB_ENV
+          "$APK" --version
+
+      # ------------------------------------------------------------------
+      # STEP 11: Decode keystore from secret
+      # Secret KEYSTORE_BASE64 must be base64-encoded .jks
+      # Dump cert info to keystore-info.txt for verification
+      # ------------------------------------------------------------------
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
+          ls -lh keystore.jks
+          keytool -list -v -keystore keystore.jks -storepass "${{ secrets.KEYSTORE_PASSWORD }}" -alias "${{ secrets.KEY_ALIAS }}" | tee keystore-info.txt
+
+      # ------------------------------------------------------------------
+      # STEP 12: Sign APKs
+      # Use apksigner (not jarsigner) for v2/v3 signatures
+      # Rename from *-unsigned.apk to *-signed.apk
+      # ------------------------------------------------------------------
+      - name: Sign APKs
+        run: |
+          mkdir -p signed
+          for apk in out/*.apk; do
+            base=$(basename "$apk" .apk)
+            base=$(echo $base | sed 's/-unsigned//')
+            outname="${base}-signed.apk"
+            echo "=== Signing $apk ==="
+            echo "Output: signed/$outname"
+            "$APKSIGNER" sign \
+              --ks keystore.jks \
+              --ks-pass pass:"${{ secrets.KEYSTORE_PASSWORD }}" \
+              --ks-key-alias "${{ secrets.KEY_ALIAS }}" \
+              --key-pass pass:"${{ secrets.KEY_PASSWORD }}" \
+              --out "signed/$outname" "$apk"
+            echo "Signed: signed/$outname"
+          done
+          ls -lh signed/
+
+      # ------------------------------------------------------------------
+      # STEP 13: Verify signatures
+      # Verify v1/v2/v3 and print SHA-256 fingerprint
+      # ------------------------------------------------------------------
+      - name: Verify signatures
+        run: |
+          for apk in signed/*.apk; do
+            echo "========================================"
+            echo "Verifying: $(basename $apk)"
+            echo "========================================"
+            "$APKSIGNER" verify --verbose --print-certs "$apk" | tee verify-$(basename $apk).txt
+          done
+
+      # ------------------------------------------------------------------
+      # STEP 14: Authenticity check
+      # Compare actual fingerprint with EXPECTED_CERT_SHA256
+      # Fail build if mismatch to prevent supply-chain attack
+      # ------------------------------------------------------------------
+      - name: Authenticity check
+        env:
+          EXPECTED_SHA256: ${{ secrets.EXPECTED_CERT_SHA256 }}
+        run: |
+          for apk in signed/*.apk; do
+            ACTUAL=$("$APKSIGNER" verify --print-certs "$apk" | grep SHA-256 | head -1 | awk '{print $NF}' | tr '[:upper:]' '[:lower:]')
+            echo "APK: $(basename $apk)"
+            echo "Actual fingerprint: $ACTUAL"
+            if [ -n "$EXPECTED_SHA256" ]; then
+              EXP=$(echo "$EXPECTED_SHA256" | tr '[:upper:]' '[:lower:]')
+              echo "Expected fingerprint: $EXP"
+              if [ "$ACTUAL" != "$EXP" ]; then
+                echo "ERROR: Fingerprint mismatch!"
+                exit 1
+              else
+                echo "OK: Fingerprint match"
+              fi
+            else
+              echo "No EXPECTED_CERT_SHA256 set, skipping check"
+            fi
+          done
+
+      # ------------------------------------------------------------------
+      # STEP 15: Generate build report
+      # Combine commit hash, pre-sign and post-sign hashes
+      # ------------------------------------------------------------------
+      - name: Generate report
+        run: |
+          {
+            echo "========================================"
+            echo "Bitcoin Wallet core v11 Build Report"
+            echo "========================================"
+            echo "Build Date (UTC): $(date -u)"
+            echo "Runner: ubuntu-22.04"
+            echo "Java: 11 (Temurin)"
+            echo "Gradle: 4.10.3"
+            echo "AGP: 3.1.4"
+            echo "Commit: $(cat commit.txt)"
+            echo ""
+            echo "--- Pre-sign APKs ---"
+            cat out/raw-sha256.txt
+            echo ""
+            echo "--- Signed APKs ---"
+            sha256sum signed/*.apk
+            echo ""
+            echo "--- File sizes ---"
+            ls -lh signed/
+          } > report.txt
+          cat report.txt
+
+      # ------------------------------------------------------------------
+      # STEP 16: Upload artifacts
+      # Use upload-artifact@v6.0.0 (Node 24) to avoid Node 20 warning
+      # ------------------------------------------------------------------
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: apk-v11.04-signed-CI
+          path: |
+            signed/*.apk
+            report.txt
+            keystore-info.txt
+            out/raw-sha256.txt
+            verify-*.txt
+            commit.txt
+          retention-days: 90
+          compression-level: 0
