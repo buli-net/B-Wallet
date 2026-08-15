@@ -1,3 +1,108 @@
+
+=========================================== [ Mod by buli-net ] ==================================+====================
+================
+* - 15/08/2026 |
+================
++ Update values
+
+- Create file wallet/res/values-vi/strings_help.xml
+- Update string file wallet/res/values-vi/strings.xml
+
+------------------------------------------------------------------
+
++ Active donate menu
+- wallet/res/menu/wallet_options.xml
+- Add code line 89->94
+
+- wallet/src/wallet/Constants.java
+- // line 176,177
+- add code line 178,179
+
+- wallet/src/wallet/ui/WalletActivity.java
+- add code line 54, 264->268, 340->344, 502->509
+
+------------------------------------------------------------------
+
++ Add Create paper wallet
+
+- Create file wallet/res/layout/paper_wallet_print.xml
+- Create file wallet/res/layout/activity_paper_wallet.xml
+- Create file wallet/src/wallet/ui/PaperWalletActivity.java
+- Create file wallet/src/wallet/util/Bip38Helper.java
+- Create file wallet/res/menu/paper_wallet_options.xml
+
+- Create file wallet/res/drawable/ic_export_txt_24dp.xml
+- Create file wallet/res/drawable/ic_print_24dp.xml
+- Create file wallet/res/drawable/ic_refresh_24dp.xml
+- Create file wallet/res/drawable/ic_save_24dp.xml
+- Create file wallet/res/drawable/ic_share_24dp.xml
+
+
+- Create file wallet/res/drawable/ic_copy_24dp.xml
+- Create file wallet/res/drawable/ic_eye_off_24dp.xml
+- Create file wallet/res/drawable/ic_eye_on---_24dp.xml
+- Create file wallet/res/drawable/ic_key_wif_24dp.xml
+- Create file wallet/res/drawable/ic_qr_bech32_24dp.xml
+
+
+
+- Add code file wallet/build.gradle [ add code line 37 ]
+- Add code file wallet/res/xml/file_provider.xml [ add code line 9-->13 ]
+- Add code file wallet/AndroidManifest.xml [add code line 91-->98]
+- Add code file wallet/res/values/strings.xml [add code line 383 --> 458]
+- Add code file wallet/src/wallet/ui/WalletActivity.java [ add code line 311--> 315]
+- Add code file wallet/res/menu/wallet_options.xml [add code line 71-->76]
+
+=====================================================================
+----------------------------------------------------------------------
+
++ Active layout hide at file wallet/res/values/layouts.xml
+
+    - wallet_actions_top edit false > true
+    - show_local_balance edit false > true
+    - show_wallet_address_dialog_hint edit false > true
+    - address_book_two_panes edit false > true
+    - network_monitor_two_panes edit false > true
+-----------------------------------------------------------------------
+
++ Fix theme ui setting bug light/dark
+
+- wallet/AndroidManifest.xml [ add line 186, <!-- line 187 --> ]
+- wallet/res/values-night/styles.xml [ add code line 56->99 ]
+- wallet/res/values/styles.xml [ add code line 130->175 ]
+
+------------------------------------------------------------------
+
++ Update ID testnet & mainnet
+- file wallet/build.gradle
+- // line 67, 78
+- add code line 68,79
+------------------------------------------------------------------
+
++ update link check version wallet.schildbach.de/version -> buli-net.github.io/version
+
+- wallet/src/wallet/Constants.java [ // line 153. add code line 154 ]
+- wallet/res/xml/network_security_config.xml [ // line 14. add code line 15 ]
+- wallet/AndroidManifest.xml [ // line 70. add code line 71 ]
+-----------------------------------------------------------------------
+
++ update link check fees wallet.schildbach.de/fees ->. buli-net.github.io/fees
+
+- wallet/src/wallet/Constants.java [ // line 157. add code line 158 ]
+
+-------------------------------------------------------------------------
+
++ update email report: bitcoin.wallet.developers@gmail.com --> hvlrcb@gmail.com
+
+- wallet/src/wallet/Constants.java [ // line 180, add code line 181]
+
+--------------------------------------------------------------------------
++ update binary url
+- wallet/src/wallet/Constants.java
+  . // line 205
+  . Add code line 206
+=================END=================================END=========================================END====================
+
 v11.01-v11.04
 
 * Regular check for critical updates can be disabled in the settings.
