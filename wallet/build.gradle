@@ -36,7 +36,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.print:print:1.0.0' // import for create paper wallet
 }
-}
 
 android {
     compileSdkVersion 'android-34'
