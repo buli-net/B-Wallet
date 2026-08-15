@@ -260,6 +260,11 @@ public final class WalletActivity extends AbstractWalletActivity {
                         && res.getBoolean(R.bool.show_exchange_rates_option);
                 menu.findItem(R.id.wallet_options_exchange_rates).setVisible(showExchangeRatesOption);
                 menu.findItem(R.id.wallet_options_sweep_wallet).setVisible(Constants.ENABLE_SWEEP_WALLET);
+           // donate 1/3
+                menu.findItem(R.id.wallet_options_donate).setVisible(
+                    Constants.NETWORK_PARAMETERS.getId().equals(BitcoinNetwork.ID_MAINNET)
+                );
+           // end donate 1/3
                 final String externalStorageState = Environment.getExternalStorageState();
                 final boolean enableRestoreWalletOption = Environment.MEDIA_MOUNTED.equals(externalStorageState)
                         || Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
@@ -331,6 +336,11 @@ public final class WalletActivity extends AbstractWalletActivity {
                 } else if (itemId == R.id.wallet_options_report_issue) {
                     viewModel.showReportIssueDialog.setValue(Event.simple());
                     return true;
+            // donate 2/3
+                } else if (itemId == R.id.wallet_options_donate) {
+                    handleDonate();
+                    return true;
+            //end donate 2/3
                 } else if (itemId == R.id.wallet_options_help) {
                     viewModel.showHelpDialog.setValue(new Event<>(R.string.help_wallet));
                     return true;
@@ -488,7 +498,14 @@ public final class WalletActivity extends AbstractWalletActivity {
     public void handleSendCoins() {
         startActivity(new Intent(this, SendCoinsActivity.class));
     }
-
+// donate 3/3
+    private void handleDonate() {
+        SendCoinsActivity.start(this, PaymentIntent.fromAddress(
+            Constants.DONATION_ADDRESS,
+            getString(R.string.wallet_donate_address_label)
+        ));
+    }
+// end donate 3/3
     public void handleScan(final View clickView) {
         // The animation must be ended because of several graphical glitching that happens when the
         // Camera/SurfaceView is used while the animation is running.
