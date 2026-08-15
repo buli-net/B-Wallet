@@ -3,6 +3,16 @@
 ================
 * - 15/08/2026 |
 ================
+
+-----------------------------------------------------------------
+
++ Create file build APK
+
+- .github/workflows/Build CI.yml
+- .github/workflows/Build Docker.yml
+
+-----------------------------------------------------------------
+
 + Update values
 
 - Create file wallet/res/values-vi/strings_help.xml
@@ -11,6 +21,7 @@
 ------------------------------------------------------------------
 
 + Active donate menu
+
 - wallet/res/menu/wallet_options.xml
 - Add code line 89->94
 
@@ -63,6 +74,7 @@
     - show_wallet_address_dialog_hint edit false > true
     - address_book_two_panes edit false > true
     - network_monitor_two_panes edit false > true
+
 -----------------------------------------------------------------------
 
 + Fix theme ui setting bug light/dark
@@ -77,6 +89,7 @@
 - file wallet/build.gradle
 - // line 67, 78
 - add code line 68,79
+
 ------------------------------------------------------------------
 
 + update link check version wallet.schildbach.de/version -> buli-net.github.io/version
@@ -84,6 +97,7 @@
 - wallet/src/wallet/Constants.java [ // line 153. add code line 154 ]
 - wallet/res/xml/network_security_config.xml [ // line 14. add code line 15 ]
 - wallet/AndroidManifest.xml [ // line 70. add code line 71 ]
+
 -----------------------------------------------------------------------
 
 + update link check fees wallet.schildbach.de/fees ->. buli-net.github.io/fees
@@ -97,10 +111,12 @@
 - wallet/src/wallet/Constants.java [ // line 180, add code line 181]
 
 --------------------------------------------------------------------------
+
 + update binary url
 - wallet/src/wallet/Constants.java
   . // line 205
   . Add code line 206
+
 =================END=================================END=========================================END====================
 
 v11.01-v11.04
