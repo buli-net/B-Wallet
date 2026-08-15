@@ -1,0 +1,156 @@
+name: Build Bitcoin Wallet core v11 - Docker Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      # ------------------------------------------------------------------
+      # 0. Runner info
+      # ------------------------------------------------------------------
+      - name: 0. Print runner info
+        run: |
+          echo "=== RUNNER INFO ==="
+          uname -a
+          date -u
+
+      # ------------------------------------------------------------------
+      # 1. Checkout
+      # ------------------------------------------------------------------
+      - uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
+
+      - name: 1. Verify commit
+        run: |
+          git log -1 --pretty=full
+          git rev-parse HEAD > commit.txt
+
+      # ------------------------------------------------------------------
+      # 2. Setup JDK17 + Android SDK (for apksigner)
+      # ------------------------------------------------------------------
+      - uses: actions/setup-java@v5.0.0
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v4.0.0
+
+      # ------------------------------------------------------------------
+      # 3. Build - ver 11.04
+      # ------------------------------------------------------------------
+      - name: 2. Enable Buildx
+        run: |
+          docker buildx version
+          docker buildx create --use
+
+      - name: 3. Build APKs with Docker
+        run: |
+          DOCKER_BUILDKIT=1 docker build \
+            --file build.Containerfile \
+            --target export-stage \
+            --output type=local,dest=out \
+            .
+          echo "=== APKs built ==="
+          ls -lh out/
+          sha256sum out/*.apk > out/raw-sha256.txt
+
+      # ------------------------------------------------------------------
+      # 4. Find apksigner
+      # ------------------------------------------------------------------
+      - name: 4. Find apksigner
+        run: |
+          APK=$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -1)
+          echo "APKSIGNER=$APK" >> $GITHUB_ENV
+          "$APK" --version
+
+      # ------------------------------------------------------------------
+      # 5. Decode keystore private
+      # ------------------------------------------------------------------
+      - name: 5. Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
+          keytool -list -v -keystore keystore.jks \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -alias "${{ secrets.KEY_ALIAS }}" | tee keystore-info.txt
+
+      # ------------------------------------------------------------------
+      # 6. Sign all APK by KEYSTORE private 
+      # ------------------------------------------------------------------
+      - name: 6. Sign ALL APKs with private key
+        run: |
+          set -e
+          mkdir -p signed
+          shopt -s nullglob
+          for apk in out/*.apk; do
+            orig=$(basename "$apk")
+            clean=$(echo "$orig" | sed 's/-unsigned//' | sed 's/\.apk$//')
+            outname="${clean}-signed.apk"
+            echo ">> Signing $orig -> $outname"
+            "$APKSIGNER" sign \
+              --ks keystore.jks \
+              --ks-pass pass:"${{ secrets.KEYSTORE_PASSWORD }}" \
+              --ks-key-alias "${{ secrets.KEY_ALIAS }}" \
+              --key-pass pass:"${{ secrets.KEY_PASSWORD }}" \
+              --out "signed/$outname" "$apk"
+          done
+          ls -lh signed/
+
+      # ------------------------------------------------------------------
+      # 7. Verify + fingerprint check
+      # ------------------------------------------------------------------
+      - name: 7. Verify signatures
+        run: |
+          for apk in signed/*.apk; do
+            echo "===== $(basename $apk) ====="
+            "$APKSIGNER" verify --verbose --print-certs "$apk" | tee verify-$(basename $apk).txt
+          done
+
+      - name: 8. Authenticity check
+        env:
+          EXPECTED_SHA256: ${{ secrets.EXPECTED_CERT_SHA256 }}
+        run: |
+          for apk in signed/*.apk; do
+            ACTUAL=$("$APKSIGNER" verify --print-certs "$apk" | grep SHA-256 | awk '{print $NF}' | tr '[:upper:]' '[:lower:]')
+            EXPECTED=$(echo "$EXPECTED_SHA256" | tr '[:upper:]' '[:lower:]')
+            echo "$(basename $apk): $ACTUAL"
+            if [ -n "$EXPECTED" ] && [ "$ACTUAL" != "$EXPECTED" ]; then
+              echo "❌ Mismatch!"; exit 1
+            fi
+          done
+
+      # ------------------------------------------------------------------
+      # 8. Report + upload
+      # ------------------------------------------------------------------
+      - name: 9. Generate report
+        run: |
+          {
+            echo "===== v11.04 PRIVATE SIGN BUILD ====="
+            date -u
+            echo "Commit: $(cat commit.txt)"
+            echo ""
+            echo "--- Pre-sign ---"
+            cat out/raw-sha256.txt
+            echo ""
+            echo "--- Signed ---"
+            sha256sum signed/*.apk
+            echo ""
+            echo "--- File sizes ---"
+            ls -lh signed/
+          } | tee report.txt
+
+      - name: 10. Upload
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: apk-v11.04-signed-docker
+          path: |
+            signed/*.apk
+            debug/report.txt
+            keystore-info.txt
+            out/raw-sha256.txt
+            verify-*.txt
+            commit.txt
+          retention-days: 90
+          compression-level: 0
