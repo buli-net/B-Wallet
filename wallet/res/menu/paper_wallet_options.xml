@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2011-2024 Andreas Schildbach and the Bitcoin Wallet contributors
+  ~ Copyright 2024-2026 Buli-Net - v11.04-BASE-BK Fork
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ Original source: https://github.com/bitcoin-wallet/bitcoin-wallet
+  ~ Modified: Menu items synchronized with PaperWalletActivity.java
+  ~ Supports only Legacy Compressed + SegWit paper wallet operations
+  -->
+
+<!-- Menu for PaperWalletActivity - actions: refresh, save, share, print, export -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Refresh: Generate new random paper wallet keypair -->
+    <item
+        android:id="@+id/paper_wallet_options_refresh"
+        android:icon="@drawable/ic_refresh_24dp"
+        android:showAsAction="always|withText"
+        android:title="@string/paper_wallet_options_refresh"
+        android:titleCondensed="@string/paper_wallet_options_refresh" />
+
+    <!-- Save: Save paper wallet as PNG to Pictures/PaperWallet -->
+    <item
+        android:id="@+id/paper_wallet_options_save"
+        android:icon="@drawable/ic_save_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/paper_wallet_options_save"
+        android:titleCondensed="@string/paper_wallet_options_save" />
+
+    <!-- Share: Share paper wallet image via FileProvider -->
+    <item
+        android:id="@+id/paper_wallet_options_share"
+        android:icon="@drawable/ic_share_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/paper_wallet_options_share"
+        android:titleCondensed="@string/paper_wallet_options_share" />
+
+    <!-- Print: Print paper wallet using Android PrintHelper -->
+    <item
+        android:id="@+id/paper_wallet_options_print"
+        android:icon="@drawable/ic_print_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/paper_wallet_options_print"
+        android:titleCondensed="@string/paper_wallet_options_print" />
+
+    <!-- Export: Export wallet data as TXT to Documents/PaperWallet -->
+    <item
+        android:id="@+id/paper_wallet_options_export"
+        android:icon="@drawable/ic_export_txt_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/paper_wallet_options_export"
+        android:titleCondensed="@string/paper_wallet_options_export" />
+
+</menu>
