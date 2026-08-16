@@ -45,7 +45,7 @@
     <string name="wallet_options_safety">Lưu ý an toàn</string>
     <string name="wallet_options_technical_notes_title">Ghi chú kỹ thuật</string>
     <string name="wallet_options_donate">Quyên góp</string>
-    <string name="wallet_donate_address_label">Quyên góp cho Bitcoin Wallet Core</string>
+    <string name="wallet_donate_address_label">Quyên góp cho ví Bitcoin</string>
     <string name="alert_dialogs_fragment_insecure_device_title">Cảnh báo bảo mật</string>
     <string name="wallet_low_storage_dialog_title">Dung lượng lưu trữ nội bộ thiết bị thấp!</string>
     <string name="wallet_low_storage_dialog_msg">Ví Bitcoin sử dụng bộ nhớ trong để ghi nhớ các giao dịch và khối. Nếu hết dung lượng, ứng dụng sẽ ngừng hoạt động và Bitcoin của bạn có thể bị rủi ro!\n\nBạn có muốn mở Trình quản lý ứng dụng để gỡ bỏ các ứng dụng không cần thiết không?</string>
