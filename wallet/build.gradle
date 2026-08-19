@@ -64,8 +64,8 @@ android {
             dimension 'network'
             // if you fork the app, replace the following applicationId by this:
             // applicationIdSuffix '.testnet'
-           // applicationId 'de.schildbach.wallet_test'
-            applicationId 'net.buli.wallet_test'
+            applicationId 'de.schildbach.wallet_test'
+         //   applicationId 'net.buli.wallet_test'
         }
         Signet {
             dimension 'network'
@@ -75,8 +75,8 @@ android {
             dimension 'network'
             // if you fork the app, replace the following applicationId by this:
             // applicationIdSuffix '.mainnet'
-            // applicationId 'de.schildbach.wallet'
-            applicationId 'net.buli.wallet'
+             applicationId 'de.schildbach.wallet'
+          //  applicationId 'net.buli.wallet'
         }
     }
 
