@@ -315,8 +315,15 @@ public class WalletTransactionsFragment extends Fragment implements Transactions
         } else if (itemId == R.id.wallet_transactions_context_browse) {
             final Uri blockExplorerUri = config.getBlockExplorer();
             log.info("Viewing transaction {} on {}", transactionId, blockExplorerUri);
-            activity.startExternalDocument(Uri.withAppendedPath(blockExplorerUri, "tx/" + transactionId.toString()));
+          //  activity.startExternalDocument(Uri.withAppendedPath(blockExplorerUri, "tx/" + transactionId.toString()));
+          // change browser open transaction
+            final Uri txUrl = Uri.withAppendedPath(blockExplorerUri, "tx/" + transactionId.toString());
+            Intent browseIntent = new Intent(activity, BrowserActivity.class);
+            browseIntent.setData(txUrl);
+            startActivity(browseIntent);
+         //end change browser open transaction
             return true;
+                
         } else {
             return false;
         }
