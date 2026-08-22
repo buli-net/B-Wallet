@@ -218,6 +218,21 @@
             android:theme="@style/My.Theme"
             android:windowSoftInputMode="adjustResize" />
 
+          <!-- Web Browser Activity -->
+
+        <activity
+            android:name="wallet.ui.BrowserActivity"
+            android:parentActivityName="wallet.ui.WalletActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"
+            android:noHistory="false"
+            android:launchMode="singleTop"
+            android:label="@string/menu_web_browser"
+            android:theme="@style/My.Preference" />
+
+         <!-- end-->
+        
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.file_attachment"
