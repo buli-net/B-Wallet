@@ -223,7 +223,7 @@
         <activity
             android:name="wallet.ui.BrowserActivity"
             android:parentActivityName="wallet.ui.WalletActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:configChanges="keyboard|keyboardHidden"
             android:windowSoftInputMode="adjustResize"
             android:exported="true"
             android:noHistory="false"
