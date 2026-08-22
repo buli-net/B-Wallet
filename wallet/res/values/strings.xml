@@ -457,19 +457,18 @@
 <string name="paper_wallet_options_print">Print</string>
 <string name="paper_wallet_options_export">Export TXT</string>
 
-    <!-- Menu: Utilities & Web Browser -->
+<!-- Menu: Utilities & Web Browser -->
 <string name="menu_utilities">Utilities</string>
 <string name="menu_web_browser">Web Browser</string>
 
-    <!-- Browser Activity -->
-
+<!-- Browser Activity -->
 <string name="browser_home_title">Home</string>
 <string name="browser_history_title">History</string>
 <string name="browser_set_home_title">Set home page</string>
 <string name="browser_url_hint">Search or enter URL</string>
 <string name="browser_no_history">No history</string>
 <string name="browser_history_title_dialog">Browser History</string>
-<string name="browser_clear_history">Clear</string>
+<string name="browser_clear_history">Clear history</string>
 <string name="browser_close">Close</string>
 <string name="browser_set_home_title_dialog">Set home page</string>
 <string name="browser_home_hint">Enter URL, e.g. https://example.com</string>
