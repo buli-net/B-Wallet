@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_browser_home"
+        android:icon="@drawable/ic_home_24dp"
+        android:title="@string/browser_home_title"
+        android:titleCondensed="@string/browser_home_title"
+        android:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/menu_browser_history"
+        android:icon="@drawable/ic_history_24dp"
+        android:title="@string/browser_history_title"
+        android:titleCondensed="@string/browser_history_title"
+        android:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/menu_browser_settings_root"
+        android:icon="@drawable/ic_settings_24dp"
+        android:title="@string/browser_settings_title"
+        android:titleCondensed="@string/browser_settings_title"
+        android:showAsAction="ifRoom|withText">
+        <menu>
+            <item
+                android:id="@+id/menu_browser_set_home"
+                android:title="@string/browser_set_home_title" />
+            <item
+                android:id="@+id/menu_browser_clear_history"
+                android:title="@string/browser_clear_history" />
+        </menu>
+    </item>
+
+</menu>
