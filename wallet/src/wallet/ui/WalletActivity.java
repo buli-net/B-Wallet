@@ -312,7 +312,7 @@ public final class WalletActivity extends AbstractWalletActivity {
                 } else if (itemId == R.id.wallet_options_create_paper_wallet) {
                     startActivity(new Intent(WalletActivity.this, wallet.ui.PaperWalletActivity.class));
                     return true;
-            //emd create paper wallet
+            //end create paper wallet
                 } else if (itemId == R.id.wallet_options_network_monitor) {
                     startActivity(new Intent(WalletActivity.this, NetworkMonitorActivity.class));
                     return true;
