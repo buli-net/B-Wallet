@@ -68,7 +68,7 @@
         android:id="@+id/wallet_options_sweep_wallet"
         android:showAsAction="never"
         android:title="@string/sweep_wallet_activity_title" />
-   <!-- Create paper wallet -->
+    <!-- Create paper wallet -->
     <item
         android:id="@+id/wallet_options_create_paper_wallet"
         android:showAsAction="never"
@@ -78,6 +78,18 @@
         android:id="@+id/wallet_options_network_monitor"
         android:showAsAction="never"
         android:title="@string/network_monitor_activity_title" />
+    <!-- Utilities Submenu -->
+    <item
+        android:id="@+id/menu_utilities"
+        android:title="@string/menu_utilities">
+        <menu>
+            <!-- Web Browser inside Utilities -->
+            <item
+                android:id="@+id/menu_web_browser"
+                android:title="@string/menu_web_browser" />
+        </menu>
+    </item>
+<!-- END-NEW: Utilities Submenu -->
     <item
         android:id="@+id/wallet_options_preferences"
         android:showAsAction="never"
@@ -86,15 +98,15 @@
         android:id="@+id/wallet_options_report_issue"
         android:showAsAction="never"
         android:title="@string/preferences_report_issue_title" />
-   <!-- donate -->
+       <!-- donate -->
     <item
         android:id="@+id/wallet_options_donate"
         android:showAsAction="never"
         android:title="@string/wallet_options_donate" />
-    <!-- end -->
     <item
         android:id="@+id/wallet_options_help"
         android:orderInCategory="999"
         android:showAsAction="never"
         android:title="@string/button_help" />
+
 </menu>
