@@ -394,6 +394,7 @@
 
 <!-- Copy / Hide / Show -->
 <string name="paper_wallet_copy">Sao chép</string>
+    
 <!-- %1$s = label of copied field -->
 <string name="paper_wallet_copied">Đã sao chép %1$s</string>
 <string name="paper_wallet_hide">Ẩn</string>
@@ -455,5 +456,26 @@
 <string name="paper_wallet_options_share">Chia sẻ</string>
 <string name="paper_wallet_options_print">In</string>
 <string name="paper_wallet_options_export">Xuất TXT</string>
+
+<!-- Menu: Utilities & Web Browser -->
+<string name="menu_utilities">Tiện ích</string>
+<string name="menu_web_browser">Trình duyệt Web</string>
+
+<!-- Browser Activity -->
+<string name="browser_home_title">Trang chủ</string>
+<string name="browser_history_title">Lịch sử</string>
+<string name="browser_set_home_title">Đặt trang chủ</string>
+<string name="browser_url_hint">Tìm kiếm hoặc nhập URL</string>
+<string name="browser_no_history">Không có lịch sử</string>
+<string name="browser_history_title_dialog">Lịch sử duyệt web</string>
+<string name="browser_clear_history">Xóa lịch sử</string>
+<string name="browser_close">Đóng</string>
+<string name="browser_set_home_title_dialog">Đặt trang chủ</string>
+<string name="browser_home_hint">Nhập URL, ví dụ: https://example.com</string>
+<string name="browser_save">Lưu</string>
+<string name="browser_cancel">Hủy</string>
+<string name="browser_home_saved">Đã lưu trang chủ</string>
+<string name="browser_home_cleared">Đã xóa trang chủ</string>
+<string name="browser_settings_title">Cài đặt</string>
     
 </resources>
