@@ -1,5 +1,29 @@
 
 =========================================== [ Mod by buli-net ] ==================================+====================
+
+================
+* - 22/08/2026 |
+================
++ Add Menu->Utilities->Web browser
+
+- Create file:
+wallet/res/drawable/edittext_background.xml
+wallet/res/drawable/ic_back_24dp.xml
+wallet/res/drawable/ic_history_24dp.xml
+wallet/res/drawable/ic_history_24dp.xml
+wallet/res/drawable/ic_home_24dp.xml
+wallet/res/drawable/ic_settings_24dp.xml
+
+wallet/res/layout/activity_browser.xml
+wallet/res/layout/dialog_set_home.xml
+wallet/src/wallet/ui/BrowserActivity.java
+
+
+- Add code file
+
+wallet/res/menu/wallet_options.xml
+line 81->92
+
 ================
 * - 15/08/2026 |
 ================
@@ -23,7 +47,7 @@
 + Active donate menu
 
 - wallet/res/menu/wallet_options.xml
-- Add code line 89->94
+- Add code line 101->105
 
 - wallet/src/wallet/Constants.java
 - // line 176,177
