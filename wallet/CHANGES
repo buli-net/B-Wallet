@@ -28,6 +28,8 @@ wallet/src/wallet/ui/BrowserActivity.java
 
 
 - Add code file
+wallet/res/values/strings.xml
+line 460->479
 
 wallet/res/menu/wallet_options.xml
 line 81->92
