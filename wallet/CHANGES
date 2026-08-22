@@ -4,6 +4,14 @@
 ================
 * - 22/08/2026 |
 ================
++ Change open link transaction: out browser -> browser in wallet
+
+- Edit file
+wallet/src/wallet/ui/WalletTransactionsFragment.java
+// line 318
+add code line 319->324
+
+
 + Add Menu->Utilities->Web browser
 
 - Create file:
