@@ -21,6 +21,7 @@ wallet/res/drawable/ic_history_24dp.xml
 wallet/res/drawable/ic_history_24dp.xml
 wallet/res/drawable/ic_home_24dp.xml
 wallet/res/drawable/ic_settings_24dp.xml
+wallet/res/drawable/ic_forward_24dp.xml
 
 wallet/res/layout/activity_browser.xml
 wallet/res/layout/dialog_set_home.xml
