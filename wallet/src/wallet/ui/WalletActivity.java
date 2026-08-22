@@ -342,6 +342,12 @@ public final class WalletActivity extends AbstractWalletActivity {
                     handleDonate();
                     return true;
             //end donate 3/4
+           // Web Browser
+                } else if (itemId == R.id.menu_web_browser) { 
+                final Intent intent = new Intent(WalletActivity.this, BrowserActivity.class);
+                    startActivity(intent);
+                    return true;
+            // end web the browser
                 } else if (itemId == R.id.wallet_options_help) {
                     viewModel.showHelpDialog.setValue(new Event<>(R.string.help_wallet));
                     return true;
