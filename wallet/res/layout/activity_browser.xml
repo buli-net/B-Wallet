@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/windowBackground">
+
+    <LinearLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_action_bar">
+
+        <ImageView
+            android:id="@+id/btn_back_web"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_back_24dp"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/btn_forward_web"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_forward_24dp"
+            android:layout_marginEnd="12dp"/>
+
+        <EditText
+            android:id="@+id/url_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/browser_url_hint"
+            android:inputType="textUri"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/btn_refresh_web"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_refresh_24dp"/>
+
+    </LinearLayout>
+
+    <!-- === WEBVIEW === -->
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
