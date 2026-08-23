@@ -132,6 +132,10 @@ line 345->350
 - // line 67, 78
 - add code line 68,79
 
++ Update ID link shortcuts
+- wallet/res/xml/shortcuts.xml
+- <!-- line 13,23,33 -->
+- add code line 12,22,32
 ------------------------------------------------------------------
 
 + update link check version wallet.schildbach.de/version -> buli-net.github.io/version
