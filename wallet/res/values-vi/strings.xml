@@ -477,5 +477,13 @@
 <string name="browser_home_saved">Đã lưu trang chủ</string>
 <string name="browser_home_cleared">Đã xóa trang chủ</string>
 <string name="browser_settings_title">Cài đặt</string>
+
+<string name="browser_downloading">Đang tải: %1$s</string>
+<string name="browser_download_complete">Đã tải xong: %1$s</string>
+<string name="browser_download_failed">Tải thất bại: %1$s</string>
+<string name="browser_download_blob_failed">Tải blob thất bại: %1$s</string>
+<string name="browser_download_data_failed">Xử lý Data URL thất bại: %1$s</string>
+<string name="browser_download_save_failed">Lưu file thất bại: %1$s</string>
+<string name="browser_downloading_file">Đang tải file...</string>   
     
 </resources>
