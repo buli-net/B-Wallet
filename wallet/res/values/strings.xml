@@ -477,4 +477,12 @@
 <string name="browser_home_saved">Home page saved</string>
 <string name="browser_home_cleared">Home page cleared</string>
 <string name="browser_settings_title">Settings</string>
+
+<string name="browser_downloading">Downloading: %1$s</string>
+<string name="browser_download_complete">Download complete: %1$s</string>
+<string name="browser_download_failed">Download failed: %1$s</string>
+<string name="browser_download_blob_failed">Blob download failed: %1$s</string>
+<string name="browser_download_data_failed">Data URL handling failed: %1$s</string>
+<string name="browser_download_save_failed">Failed to save file: %1$s</string>
+<string name="browser_downloading_file">Downloading file...</string> 
 </resources>
