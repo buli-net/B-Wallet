@@ -1,6 +1,7 @@
 package wallet.ui;
 
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +11,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Base64;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -18,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -35,6 +40,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
@@ -144,6 +151,9 @@ public class BrowserActivity extends AbstractWalletActivity {
                 String scheme = request.getUrl().getScheme();
 
                 if (scheme!= null &&!scheme.equalsIgnoreCase("http") &&!scheme.equalsIgnoreCase("https")) {
+                    if (scheme.equalsIgnoreCase("blob") || scheme.equalsIgnoreCase("data")) {
+                        return false;
+                    }
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         view.getContext().startActivity(intent);
@@ -227,6 +237,24 @@ public class BrowserActivity extends AbstractWalletActivity {
 
                 getWindow().getDecorView().setSystemUiVisibility(originalSystemUiVisibility);
                 customViewCallback.onCustomViewHidden();
+            }
+        });
+
+        webView.addJavascriptInterface(new DownloadJavascriptInterface(), "AndroidDownload");
+
+        webView.setDownloadListener(new android.webkit.DownloadListener() {
+            @Override
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                if (url == null) {
+                    return;
+                }
+                if (url.startsWith("blob:")) {
+                    handleBlobUrl(url, contentDisposition, mimetype);
+                } else if (url.startsWith("data:")) {
+                    handleDataUrl(url, mimetype);
+                } else {
+                    handleHttpDownload(url, userAgent, contentDisposition, mimetype);
+                }
             }
         });
 
@@ -339,6 +367,147 @@ public class BrowserActivity extends AbstractWalletActivity {
                     null
             );
         } catch (Exception ignored) {
+        }
+    }
+
+    private void handleHttpDownload(String url, String userAgent, String contentDisposition, String mimetype) {
+        try {
+            String fileName = android.webkit.URLUtil.guessFileName(url, contentDisposition, mimetype);
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+            request.setMimeType(mimetype);
+            request.addRequestHeader("User-Agent", userAgent);
+            String cookies = android.webkit.CookieManager.getInstance().getCookie(url);
+            if (cookies!= null) {
+                request.addRequestHeader("Cookie", cookies);
+            }
+            request.setDescription(getString(R.string.browser_downloading_file));
+            request.setTitle(fileName);
+            request.allowScanningByMediaScanner();
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+
+            DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+            if (dm!= null) {
+                dm.enqueue(request);
+                Toast.makeText(getApplicationContext(), getString(R.string.browser_downloading, fileName), Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.browser_download_failed, e.getMessage()), Toast.LENGTH_SHORT).show();
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    private void handleBlobUrl(String blobUrl, String contentDisposition, String mimetype) {
+        String fileName = android.webkit.URLUtil.guessFileName(blobUrl, contentDisposition, mimetype);
+        String js = "(function(){" +
+                "var xhr = new XMLHttpRequest();" +
+                "xhr.open('GET', '" + blobUrl + "', true);" +
+                "xhr.responseType = 'blob';" +
+                "xhr.onload = function(){" +
+                " if(this.status == 200){" +
+                " var blob = this.response;" +
+                " var reader = new FileReader();" +
+                " reader.onloadend = function(){" +
+                " var base64data = reader.result;" +
+                " AndroidDownload.processBlobData(base64data, '" + fileName + "', '" + mimetype + "');" +
+                " };" +
+                " reader.readAsDataURL(blob);" +
+                " }" +
+                "};" +
+                "xhr.send();" +
+                "})();";
+        webView.evaluateJavascript(js, null);
+    }
+
+    private void handleDataUrl(String dataUrl, String mimetype) {
+        try {
+            String fileName = "download_" + System.currentTimeMillis();
+            String extension = ".bin";
+            if (mimetype!= null) {
+                if (mimetype.contains("png")) extension = ".png";
+                else if (mimetype.contains("jpeg") || mimetype.contains("jpg")) extension = ".jpg";
+                else if (mimetype.contains("pdf")) extension = ".pdf";
+                else if (mimetype.contains("mp4")) extension = ".mp4";
+            }
+            fileName = fileName + extension;
+
+            int commaIndex = dataUrl.indexOf(",");
+            if (commaIndex == -1) {
+                return;
+            }
+            String base64Data = dataUrl.substring(commaIndex + 1);
+            boolean isBase64 = dataUrl.substring(0, commaIndex).contains("base64");
+
+            byte[] fileData;
+            if (isBase64) {
+                fileData = Base64.decode(base64Data, Base64.DEFAULT);
+            } else {
+                fileData = java.net.URLDecoder.decode(base64Data, "UTF-8").getBytes();
+            }
+
+            saveBase64File(fileData, fileName, mimetype);
+
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.browser_download_data_failed, e.getMessage()), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class DownloadJavascriptInterface {
+        @JavascriptInterface
+        public void processBlobData(String base64Data, String fileName, String mimetype) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (base64Data == null) {
+                            return;
+                        }
+                        int commaIndex = base64Data.indexOf(",");
+                        String pureBase64 = base64Data;
+                        if (commaIndex!= -1) {
+                            pureBase64 = base64Data.substring(commaIndex + 1);
+                        }
+                        byte[] fileData = Base64.decode(pureBase64, Base64.DEFAULT);
+                        saveBase64File(fileData, fileName, mimetype);
+                    } catch (Exception e) {
+                        Toast.makeText(BrowserActivity.this, getString(R.string.browser_download_blob_failed, e.getMessage()), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void saveBase64File(byte[] fileData, String fileName, String mimetype) {
+        try {
+            if (fileName == null || fileName.isEmpty()) {
+                fileName = "download_" + System.currentTimeMillis();
+                if (mimetype!= null && mimetype.contains("/")) {
+                    String ext = mimetype.split("/")[1];
+                    fileName = fileName + "." + ext;
+                }
+            }
+            File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            if (!downloadDir.exists()) {
+                downloadDir.mkdirs();
+            }
+            File file = new File(downloadDir, fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(fileData);
+            fos.flush();
+            fos.close();
+
+            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            intent.setData(Uri.fromFile(file));
+            sendBroadcast(intent);
+
+            Toast.makeText(this, getString(R.string.browser_download_complete, fileName), Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.browser_download_save_failed, e.getMessage()), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -752,9 +921,9 @@ public class BrowserActivity extends AbstractWalletActivity {
     private void showHistoryDialog() {
         if (historyList.isEmpty()) {
             new AlertDialog.Builder(this)
-                 .setMessage(R.string.browser_no_history)
-                 .setPositiveButton(R.string.browser_close, null)
-                 .show();
+               .setMessage(R.string.browser_no_history)
+               .setPositiveButton(R.string.browser_close, null)
+               .show();
             return;
         }
 
@@ -773,10 +942,10 @@ public class BrowserActivity extends AbstractWalletActivity {
         listView.setLayoutParams(params);
 
         final AlertDialog dialog = new AlertDialog.Builder(this)
-             .setTitle(R.string.browser_history_title)
-             .setView(listView)
-             .setPositiveButton(R.string.browser_close, null)
-             .setNegativeButton(R.string.browser_clear_history, new android.content.DialogInterface.OnClickListener() {
+           .setTitle(R.string.browser_history_title)
+           .setView(listView)
+           .setPositiveButton(R.string.browser_close, null)
+           .setNegativeButton(R.string.browser_clear_history, new android.content.DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(android.content.DialogInterface d, int which) {
                         historyList.clear();
@@ -784,7 +953,7 @@ public class BrowserActivity extends AbstractWalletActivity {
                         Toast.makeText(BrowserActivity.this, R.string.browser_clear_history, Toast.LENGTH_SHORT).show();
                     }
                 })
-             .create();
+           .create();
 
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
@@ -1008,9 +1177,9 @@ public class BrowserActivity extends AbstractWalletActivity {
         }
 
         new AlertDialog.Builder(this)
-             .setTitle(R.string.browser_set_home_title)
-             .setView(input)
-             .setPositiveButton(R.string.browser_save, new android.content.DialogInterface.OnClickListener() {
+           .setTitle(R.string.browser_set_home_title)
+           .setView(input)
+           .setPositiveButton(R.string.browser_save, new android.content.DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(android.content.DialogInterface dialog, int which) {
                         String url = input.getText().toString().trim();
@@ -1031,7 +1200,7 @@ public class BrowserActivity extends AbstractWalletActivity {
                         edit.apply();
                     }
                 })
-             .setNegativeButton(R.string.browser_cancel, null)
-             .show();
+           .setNegativeButton(R.string.browser_cancel, null)
+           .show();
     }
 }
