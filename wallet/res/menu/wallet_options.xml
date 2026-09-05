@@ -60,10 +60,24 @@
                 android:visible="false" />
         </menu>
     </item>
+   <!-- Move Exchnge Rates & add Frice Chart
     <item
         android:id="@+id/wallet_options_exchange_rates"
         android:showAsAction="never"
         android:title="@string/exchange_rates_activity_title" />
+    -->
+    <item android:title="@string/menu_market">
+    <menu>
+        <item android:id="@+id/wallet_options_exchange_rates"
+              android:showAsAction="never"
+              android:title="@string/exchange_rates_activity_title" />
+        <item android:id="@+id/menu_market_chart"
+              android:showAsAction="never"
+              android:title="@string/menu_price_chart" />
+    </menu>
+</item>
+    <!-- end Move Exchnge Rates & add Frice Chart -->
+    
     <item
         android:id="@+id/wallet_options_sweep_wallet"
         android:showAsAction="never"
