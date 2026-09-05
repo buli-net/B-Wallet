@@ -23,6 +23,13 @@ wallet/res/values/strings.xml
 wallet/src/wallet/ui/WalletActivity.java
 - add code line 42, 309->314
 
+wallet/res/values/colors.xml
+- add code line 50->101
+
+
+
+
+
 
 
 ================
