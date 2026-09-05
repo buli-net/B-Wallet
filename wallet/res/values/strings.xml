@@ -492,7 +492,7 @@
     <string name="menu_price_chart">Price Chart</string>
 
     <string name="chart_loading">Loading…</string>
-    <string name="chart_close_in">Close in %1$s</string>
+    <string name="chart_close_in">Close in: %1$s</string>
     <string name="chart_high_label">High: %1$s</string>
     <string name="chart_low_label">Low: %1$s</string>
     <string name="chart_open_label">Open: %1$s</string>
@@ -500,11 +500,11 @@
     <string name="chart_low_detail">Low: %1$s</string>
     <string name="chart_close_label">Close: %1$s</string>
     <string name="chart_volume_label">Volume: %1$s</string>
-    <string name="chart_vol_base_format">Vol(%1$s) %2$s</string>
-    <string name="chart_vol_quote_format">Vol(%1$s) %2$s</string>
+    <string name="chart_vol_base_format">Volume(%1$s) %2$s</string>
+    <string name="chart_vol_quote_format">Volume(%1$s) %2$s</string>
     <string name="chart_ma_default">MA</string>
-    <string name="chart_body_width">Body width: %1$s</string>
-    <string name="chart_wick_width">Wick width: %1$d</string>
+    <string name="chart_body_width">Body: %1$s</string>
+    <string name="chart_wick_width">Wick: %1$d</string>
     <string name="chart_ma_line_width">MA width: %1$d</string>
     <string name="chart_visible_candles">Visible: %1$d</string>
     <string name="chart_price_text_size">Text: %1$d</string>
