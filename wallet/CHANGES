@@ -64,7 +64,7 @@ wallet/AndroidManifest.xml
 line 221->234
 
 wallet/src/wallet/ui/WalletActivity.java
-line 345->350
+line 352->357
 
 ================
 * - 15/08/2026 |
