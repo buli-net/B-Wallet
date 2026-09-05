@@ -46,4 +46,57 @@
     <!-- app icon -->
     <color name="appicon_gradient_start">#bbbbbb</color>
     <color name="appicon_gradient_end">#999999</color>
+
+    <!-- Market chart - Core - Light Theme -->
+    <color name="chart_bg">#FFEAEAF0</color>
+    <color name="chart_grid">#1F000000</color>
+    <color name="chart_text">#FF000000</color>
+    <color name="chart_wick">#FF000000</color>
+    <color name="chart_last_price_line">#FF2EB5A5</color>
+    <color name="chart_last_price_label_bg">#FF2EB5A5</color>
+    <color name="last_label_text">#FF000000</color>
+    <color name="chart_selected_line">#99000000</color>
+    <color name="color_picker_border">#33000000</color>
+
+    <!-- Market chart - Default candle -->
+    <color name="chart_bull_default">#FF26A69A</color>
+    <color name="chart_bear_default">#FFEF5350</color>
+
+    <!-- Vol MA default colors -->
+    <color name="chart_vol_ma1_default">#FFC107</color>
+    <color name="chart_vol_ma2_default">#2196F3</color>
+    <color name="chart_grid_color_default">#1F000000</color>
+
+    <!-- Paint XP 28 màu - loader lấy theo prefix palette_ -->
+    <color name="palette_black">#FF000000</color>
+    <color name="palette_white">#FFFFFFFF</color>
+    <color name="palette_gray">#FF808080</color>
+    <color name="palette_silver">#FFC0C0C0</color>
+    <color name="palette_maroon">#FF800000</color>
+    <color name="palette_red">#FFFF0000</color>
+    <color name="palette_olive">#FF808000</color>
+    <color name="palette_yellow">#FFFFFF00</color>
+    <color name="palette_dark_green">#FF008000</color>
+    <color name="palette_green">#FF00FF00</color>
+    <color name="palette_teal">#FF008080</color>
+    <color name="palette_cyan">#FF00FFFF</color>
+    <color name="palette_navy">#FF000080</color>
+    <color name="palette_blue">#FF0000FF</color>
+    <color name="palette_purple">#FF800080</color>
+    <color name="palette_magenta">#FFFF00FF</color>
+    <color name="palette_brown">#FF804000</color>
+    <color name="palette_orange">#FFFF8000</color>
+    <color name="palette_dark_yellow">#FF808040</color>
+    <color name="palette_light_yellow">#FFFFFF80</color>
+    <color name="palette_light_green">#FF80FF80</color>
+    <color name="palette_light_cyan">#FF80FFFF</color>
+    <color name="palette_light_blue">#FF8080FF</color>
+    <color name="palette_light_purple">#FFFF80FF</color>
+    <color name="palette_gold">#FFFFD700</color>
+    <color name="palette_lime">#FFBFFF00</color>
+    <color name="palette_pink">#FFFFA0C0</color>
+    <color name="palette_sky">#FF80C0FF</color>
+
+    <color name="palette_chart_grid_custom">#E6E6E6</color>
+    <color name="palette_price_text_custom">#000000</color>
 </resources>
