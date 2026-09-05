@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fetch & live update -->
+    <integer name="default_fetch_limit">300</integer>
+    <integer name="fetch_limit">300</integer>
+    <integer name="live_refresh_interval">1000</integer>
+    <integer name="countdown_interval">1000</integer>
+
+    <!-- visible default -->
+    <integer name="min_visible_candle_count">20</integer>
+    <integer name="max_visible_candle_count">250</integer>
+    <integer name="default_visible_candle_count">80</integer>
+
+    <!-- Paint alpha -->
+    <integer name="volume_alpha">255</integer>
+    <integer name="selected_alpha">120</integer>
+
+    <!-- Threshold & timeout -->
+    <integer name="big_fiat_threshold">100</integer>
+    <integer name="network_timeout">8000</integer>
+
+    <!-- Vol-Ma -->
+    <integer name="default_vol_ma1_period">5</integer>
+    <integer name="default_vol_ma2_period">10</integer>
+
+    <integer name="chart_body_scale">100</integer>
+
+</resources>

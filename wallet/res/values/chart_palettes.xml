@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 1 bảng màu duy nhất dùng chung cho nến, MA, giá -->
+    <array name="chart_color_palette">
+        <item>@color/palette_black</item>
+        <item>@color/palette_white</item>
+        <item>@color/palette_gray</item>
+        <item>@color/palette_silver</item>
+        <item>@color/palette_maroon</item>
+        <item>@color/palette_red</item>
+        <item>@color/palette_olive</item>
+        <item>@color/palette_yellow</item>
+        <item>@color/palette_dark_green</item>
+        <item>@color/palette_green</item>
+        <item>@color/palette_teal</item>
+        <item>@color/palette_cyan</item>
+        <item>@color/palette_navy</item>
+        <item>@color/palette_blue</item>
+        <item>@color/palette_purple</item>
+        <item>@color/palette_magenta</item>
+        <item>@color/palette_brown</item>
+        <item>@color/palette_orange</item>
+        <item>@color/palette_dark_yellow</item>
+        <item>@color/palette_light_yellow</item>
+        <item>@color/palette_light_green</item>
+        <item>@color/palette_light_cyan</item>
+        <item>@color/palette_light_blue</item>
+        <item>@color/palette_light_purple</item>
+        <item>@color/palette_gold</item>
+        <item>@color/palette_lime</item>
+        <item>@color/palette_pink</item>
+        <item>@color/palette_sky</item>
+
+        <item>@color/palette_chart_grid_custom</item>
+        <item>@color/palette_price_text_custom</item>
+
+    </array>
+</resources>

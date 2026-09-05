@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Market chart - price padding 10% -->
+    <fraction name="price_padding_fraction">10%</fraction>
+
+    <!-- Market chart - min scroll 30% of width -->
+    <fraction name="min_scroll_fraction">30%</fraction>
+
+   <fraction name="chart_body_base_fraction">30%</fraction>
+
+</resources>
