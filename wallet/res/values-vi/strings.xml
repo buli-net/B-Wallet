@@ -485,5 +485,135 @@
 <string name="browser_download_data_failed">Xử lý Data URL thất bại: %1$s</string>
 <string name="browser_download_save_failed">Lưu file thất bại: %1$s</string>
 <string name="browser_downloading_file">Đang tải file...</string>   
-    
+
+   <!-- Market chart -->
+<string name="market_chart_title">Biểu đồ thị trường</string>
+<string name="menu_market">Thị trường</string>
+<string name="menu_price_chart">Biểu đồ giá</string>
+
+<string name="chart_loading">Đang tải…</string>
+<string name="chart_close_in">Đóng trong %1$s</string>
+<string name="chart_high_label">Cao: %1$s</string>
+<string name="chart_low_label">Thấp: %1$s</string>
+<string name="chart_open_label">Mở: %1$s</string>
+<string name="chart_high_detail">Cao: %1$s</string>
+<string name="chart_low_detail">Thấp: %1$s</string>
+<string name="chart_close_label">Đóng: %1$s</string>
+<string name="chart_volume_label">KL: %1$s</string>
+<string name="chart_vol_base_format">KL(%1$s) %2$s</string>
+<string name="chart_vol_quote_format">KL(%1$s) %2$s</string>
+<string name="chart_ma_default">MA</string>
+<string name="chart_body_width">Thân: %1$s</string>
+<string name="chart_wick_width">Râu: %1$d</string>
+<string name="chart_ma_line_width">Độ rộng MA: %1$d</string>
+<string name="chart_visible_candles">Hiển thị: %1$d</string>
+<string name="chart_price_text_size">Cỡ chữ: %1$d</string>
+<string name="chart_last_line_width">Độ rộng: %1$d</string>
+<string name="chart_last_price_label_text_size">Nhãn: %1$d</string>
+
+<string name="chart_price_default">--</string>
+<string name="chart_change_default">--</string>
+<string name="chart_countdown_default">Đóng trong: --</string>
+<string name="chart_high_default">Cao 24h --</string>
+<string name="chart_low_default">Thấp 24h --</string>
+<string name="chart_vol_default">KL --</string>
+<string name="chart_vol_base_default">KL(--) --</string>
+<string name="chart_vol_quote_default">KL(--) --</string>
+<string name="chart_fiat_default">--</string>
+<string name="chart_popup_time_default">--</string>
+<string name="chart_popup_open_default">Mở --</string>
+<string name="chart_popup_high_default">Cao --</string>
+<string name="chart_popup_low_default">Thấp --</string>
+<string name="chart_popup_close_default">Đóng --</string>
+<string name="chart_popup_volume_default">KL --</string>
+<string name="chart_balance_default">--</string>
+
+<string name="intervals_title">Khung thời gian</string>
+<string name="time">Thời gian</string>
+<string name="more">Thêm</string>
+<string name="close">Đóng</string>
+<string name="interval_1m">1p</string>
+<string name="interval_3m">3p</string>
+<string name="interval_5m">5p</string>
+<string name="interval_15m">15p</string>
+<string name="interval_30m">30p</string>
+<string name="interval_1h">1g</string>
+<string name="interval_2h">2g</string>
+<string name="interval_4h">4g</string>
+<string name="interval_6h">6g</string>
+<string name="interval_12h">12g</string>
+<string name="interval_1d">1N</string>
+<string name="interval_1w">1T</string>
+<string name="interval_1M">1TH</string>
+<string name="default_interval">15p</string>
+<string name="default_symbol">BTCUSDT</string>
+
+<!-- Chart Settings - deduped -->
+<string name="chart_settings_title">Cài đặt biểu đồ</string>
+<string name="chart_settings_candle">Cài đặt nến</string>
+<string name="chart_settings_bullish">Màu tăng</string>
+<string name="chart_settings_bearish">Màu giảm</string>
+<string name="chart_settings_ma">Cài đặt MA</string>
+<string name="chart_settings_apply">Áp dụng</string>
+<string name="chart_settings_chart_options">Tùy chọn biểu đồ</string>
+<string name="chart_show_grid">Hiển thị lưới</string>
+<string name="chart_grid_color">Màu lưới</string>
+<string name="grid_show_title">Hiển thị lưới</string>
+<string name="chart_settings_current_price">Thanh giá hiện tại</string>
+<string name="chart_show_current_price_bar">Hiển thị thanh giá</string>
+<string name="chart_current_price_bar_color">Màu thanh giá</string>
+<string name="chart_current_price_bar_size">Kích thước thanh giá: %1$dpx</string>
+<string name="chart_current_price_text_color">Màu chữ giá</string>
+<string name="chart_last_price_section">Đường giá cuối</string>
+<string name="chart_show_last_price">Hiển thị giá cuối</string>
+<string name="chart_last_price_color">Màu giá cuối</string>
+<string name="chart_price_text_color">Màu chữ giá</string>
+<string name="chart_last_line_dashed">Đường nét đứt</string>
+<string name="chart_last_price_label_section">Nhãn giá hiện tại</string>
+<string name="chart_last_price_label_bg">Nền nhãn giá hiện tại</string>
+<string name="chart_last_price_label_text_color">Màu chữ nhãn giá hiện tại</string>
+<string name="chart_settings_reset">Đặt lại</string>
+<string name="chart_reset">Đặt lại</string>
+<string name="chart_reset_confirm_title">Đặt lại?</string>
+<string name="chart_reset_confirm_message">Đặt lại tất cả cài đặt biểu đồ về mặc định?</string>
+<string name="chart_settings_applied">Đã áp dụng</string>
+<string name="chart_selected_line_section">Đường chọn</string>
+<string name="chart_selected_line_color">Màu đường chọn</string>
+<string name="chart_selected_line_width">Độ rộng: %d</string>
+<string name="chart_selected_line_alpha">Độ mờ: %d</string>
+<string name="chart_selected_line_dashed">Đường nét đứt</string>
+<string name="grid_settings_title">Cài đặt lưới</string>
+<string name="grid_color_title">Màu lưới</string>
+<string name="chart_show_volume">Hiển thị khối lượng</string>
+<string name="chart_settings_last_price">Giá cuối</string>
+<string name="chart_settings_label">Nhãn</string>
+<string name="chart_settings_selected">Đã chọn</string>
+<string name="ma">MA</string>
+<string name="add_ma">+ THÊM MA</string>
+<string name="apply">ÁP DỤNG</string>
+<string name="delete">X</string>
+<string name="max_ma_reached">Tối đa 10 MA</string>
+
+<string name="balance_loading_wallet">Đang tải ví…</string>
+<string name="balance_syncing">Đang đồng bộ…</string>
+<string name="balance_loading">Đang tải…</string>
+<string name="balance_error">Lỗi</string>
+
+<string name="fiat_usd" translatable="false">USD</string>
+<string name="url_klines" translatable="false">https://api.binance.com/api/v3/klines?symbol=%1$s&amp;interval=%2$s&amp;limit=%3$d</string>
+<string name="url_ticker" translatable="false">https://api.binance.com/api/v3/ticker/24hr?symbol=%1$s</string>
+
+<string name="arrow_collapsed" translatable="false">▼</string>
+<string name="arrow_expanded" translatable="false">▲</string>
+
+<string name="chart_vol_ma_section">MA khối lượng</string>
+<string name="label_vol_show">Hiển thị MA KL</string>
+<string name="label_vol_ma1">Chu kỳ MA1</string>
+<string name="label_vol_ma2">Chu kỳ MA2</string>
+<string name="label_vol_ma_width">Độ rộng MA</string>
+<string name="label_vol_ma1_color">Màu MA1</string>
+<string name="label_vol_ma2_color">Màu MA2</string>
+
+<string name="vol_label">KL: %.2f </string>
+<string name="vol_ma_format">MA(%1$d): %2$.2f </string> 
 </resources>
