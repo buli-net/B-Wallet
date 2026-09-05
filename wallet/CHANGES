@@ -2,6 +2,24 @@
 =========================================== [ Mod by buli-net ] ==================================+====================
 
 ================
+* - 05/09/2026 |
+================
++ Move Exchange Rates -> menu Market
+- <!-- line 64->68 -->
+- add code line 69->80
+
++ Add menu Market -> Frice Chart
+
+- <!-- line 63->68 -->
+- add code line 69->79
+
+
+
+
+
+
+
+================
 * - 22/08/2026 |
 ================
 + Change open link transaction: out browser -> browser in wallet
@@ -104,7 +122,7 @@ line 345->350
 - Add code file wallet/AndroidManifest.xml [add code line 91-->98]
 - Add code file wallet/res/values/strings.xml [add code line 383 --> 458]
 - Add code file wallet/src/wallet/ui/WalletActivity.java [ add code line 311--> 315]
-- Add code file wallet/res/menu/wallet_options.xml [add code line 71-->76]
+- Add code file wallet/res/menu/wallet_options.xml [add code line 85-->90]
 
 =====================================================================
 ----------------------------------------------------------------------
