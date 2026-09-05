@@ -26,7 +26,8 @@ wallet/src/wallet/ui/WalletActivity.java
 wallet/res/values/colors.xml
 - add code line 50->101
 
-
+wallet/res/values-night/colors.xml
+- add code line 26->38
 
 
 
