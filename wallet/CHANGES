@@ -39,6 +39,29 @@ wallet/AndroidManifest.xml
 
 -------
 - Create file
+wallet/res/values/integers.xml
+wallet/res/values/fractions.xml
+wallet/res/values/chart_palettes.xml
+wallet/res/values/arrays.xml
+
+wallet/res/layout/activity_market_chart.xml
+wallet/res/layout/chart_settings_ma.xml
+wallet/res/layout/chart_settings_grid.xml
+wallet/res/layout/chart_settings_last_price.xml
+wallet/res/layout/chart_settings_label.xml
+wallet/res/layout/item_ma_popup.xml
+wallet/res/layout/chart_settings_candle.xml
+wallet/res/layout/chart_settings_popup.xml
+wallet/res/layout/chart_settings_selected.xml
+wallet/res/layout/chart_settings_vol_ma.xml
+
+wallet/res/drawable/bg_time_selected.xml
+wallet/res/drawable/ic_chart_settings.xml
+wallet/res/drawable/color_picker_border.xml
+
+
+wallet/src/wallet/ui/MarketChartView.java
+wallet/src/wallet/ui/MarketChartActivity.java
 
 
 ================
