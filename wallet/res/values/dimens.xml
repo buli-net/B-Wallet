@@ -25,4 +25,57 @@
     <dimen name="shortcut_padding">2dp</dimen>
     <dimen name="shortcut_size">48dp</dimen>
     <dimen name="shortcut_icon_size">32dp</dimen>
+
+    <dimen name="default_screen_padding">16dp</dimen>
+    <dimen name="default_small_margin">4dp</dimen>
+    <dimen name="default_tiny_margin">2dp</dimen>
+    <dimen name="default_price_large_size">20sp</dimen>
+    <dimen name="default_popup_padding">8dp</dimen>
+    <dimen name="default_popup_time_size">10sp</dimen>
+    <dimen name="default_popup_size">12sp</dimen>
+    <dimen name="default_current_price_bar_height">24dp</dimen>
+    <dimen name="default_current_price_text_size">11sp</dimen>
+
+    <!-- MarketChartView - core chart -->
+    <dimen name="default_grid_width">1dp</dimen>
+    <dimen name="default_body_min_width">2dp</dimen>
+    <dimen name="default_body_max_width">20dp</dimen>
+    <dimen name="default_candle_min_width">2dp</dimen>
+    <dimen name="default_candle_min_height">2dp</dimen>
+    <dimen name="default_price_axis_width">60dp</dimen>
+    <dimen name="default_time_axis_height">20dp</dimen>
+    <dimen name="default_top_padding">20dp</dimen>
+    <dimen name="default_bottom_padding">20dp</dimen>
+    <dimen name="default_volume_height">80dp</dimen>
+    <dimen name="default_volume_top_margin">10dp</dimen>
+    <dimen name="default_price_text_margin">4dp</dimen>
+    <dimen name="default_price_text_offset">3dp</dimen>
+    <dimen name="default_selected_width">1dp</dimen>
+    <dimen name="default_text_size">12sp</dimen>
+
+    <!-- MarketChartView - dashed last line & labels -->
+    <dimen name="dash_on">10dp</dimen>
+    <dimen name="dash_off">6dp</dimen>
+    <dimen name="time_text_offset">4dp</dimen>
+    <dimen name="loading_text_offset">100dp</dimen>
+    
+    <!-- MarketChartView - size view color poups settings -->
+    <dimen name="color_picker_size">24dp</dimen>
+    <dimen name="color_picker_corner_radius">2dp</dimen>
+    <dimen name="color_picker_border_width">1dp</dimen>
+
+    <!-- Vol - ma -->
+    <dimen name="default_vol_ma_width">1dp</dimen>
+    <dimen name="vol_setting_padding_vertical">8dp</dimen>
+    <dimen name="vol_seekbar_width">150dp</dimen>
+    <dimen name="vol_value_width">32dp</dimen>
+    <dimen name="vol_label_text_size">14sp</dimen>
+    
+    <!-- -->
+    <dimen name="default_button_height">44dp</dimen>
+    <dimen name="default_icon_button_size">40dp</dimen>
+    <dimen name="default_ma_label_margin_top">6dp</dimen>
+    <dimen name="default_ma_label_margin_bottom">14dp</dimen>
+    <dimen name="default_chip_padding_start">4dp</dimen>
+    <dimen name="default_chip_padding_end">8dp</dimen>
 </resources>
