@@ -39,6 +39,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.Toast; // add maket 1/2
 import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
 import androidx.activity.result.ActivityResultLauncher;
@@ -305,6 +306,12 @@ public final class WalletActivity extends AbstractWalletActivity {
                 } else if (itemId == R.id.wallet_options_exchange_rates) {
                     startActivity(new Intent(WalletActivity.this, ExchangeRatesActivity.class));
                     return true;
+                //add maket 2/2
+                } else if (itemId == R.id.menu_market_chart) {
+                     Intent intent = new Intent(WalletActivity.this, MarketChartActivity.class);
+                     startActivity(intent);
+                     return true;
+                // end maket 2/2
                 } else if (itemId == R.id.wallet_options_sweep_wallet) {
                     SweepWalletActivity.start(WalletActivity.this);
                     return true;
