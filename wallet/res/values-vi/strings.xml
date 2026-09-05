@@ -492,16 +492,16 @@
 <string name="menu_price_chart">Biểu đồ giá</string>
 
 <string name="chart_loading">Đang tải…</string>
-<string name="chart_close_in">Đóng trong %1$s</string>
+<string name="chart_close_in">Đóng trong: %1$s</string>
 <string name="chart_high_label">Cao: %1$s</string>
 <string name="chart_low_label">Thấp: %1$s</string>
 <string name="chart_open_label">Mở: %1$s</string>
 <string name="chart_high_detail">Cao: %1$s</string>
 <string name="chart_low_detail">Thấp: %1$s</string>
 <string name="chart_close_label">Đóng: %1$s</string>
-<string name="chart_volume_label">KL: %1$s</string>
-<string name="chart_vol_base_format">KL(%1$s) %2$s</string>
-<string name="chart_vol_quote_format">KL(%1$s) %2$s</string>
+<string name="chart_volume_label">Khối lượng: %1$s</string>
+<string name="chart_vol_base_format">Khối lượng(%1$s) %2$s</string>
+<string name="chart_vol_quote_format">Khối lượng(%1$s) %2$s</string>
 <string name="chart_ma_default">MA</string>
 <string name="chart_body_width">Thân: %1$s</string>
 <string name="chart_wick_width">Râu: %1$d</string>
@@ -525,7 +525,7 @@
 <string name="chart_popup_high_default">Cao --</string>
 <string name="chart_popup_low_default">Thấp --</string>
 <string name="chart_popup_close_default">Đóng --</string>
-<string name="chart_popup_volume_default">KL --</string>
+<string name="chart_popup_volume_default">Khối lượng --</string>
 <string name="chart_balance_default">--</string>
 
 <string name="intervals_title">Khung thời gian</string>
@@ -560,10 +560,10 @@
 <string name="chart_grid_color">Màu lưới</string>
 <string name="grid_show_title">Hiển thị lưới</string>
 <string name="chart_settings_current_price">Thanh giá hiện tại</string>
-<string name="chart_show_current_price_bar">Hiển thị thanh giá</string>
-<string name="chart_current_price_bar_color">Màu thanh giá</string>
-<string name="chart_current_price_bar_size">Kích thước thanh giá: %1$dpx</string>
-<string name="chart_current_price_text_color">Màu chữ giá</string>
+<string name="chart_show_current_price_bar">Hiển thị thanh giá hiện tại</string>
+<string name="chart_current_price_bar_color">Màu giá hiện tại</string>
+<string name="chart_current_price_bar_size">Kích thước giá hiện tại: %1$dpx</string>
+<string name="chart_current_price_text_color">Màu chữ giá hiện tại</string>
 <string name="chart_last_price_section">Đường giá cuối</string>
 <string name="chart_show_last_price">Hiển thị giá cuối</string>
 <string name="chart_last_price_color">Màu giá cuối</string>
