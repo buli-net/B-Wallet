@@ -4,17 +4,21 @@
 ================
 * - 05/09/2026 |
 ================
+
 + Move Exchange Rates -> menu Market
+- Edit file
+wallet/res/menu/wallet_options.xml
 - <!-- line 64->68 -->
 - add code line 69->80
 
 + Add menu Market -> Frice Chart
-
+- Edit file 
+wallet/res/menu/wallet_options.xml
 - <!-- line 63->68 -->
 - add code line 69->79
 
-
-
+wallet/res/values/strings.xml
+- add code line 489->618
 
 
 
