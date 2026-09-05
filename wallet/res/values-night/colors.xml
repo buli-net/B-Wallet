@@ -22,4 +22,18 @@
     <color name="fg_password_strength_fair">#ffdfa870</color>
     <color name="fg_password_strength_good">#ffa0a8a0</color>
     <color name="fg_password_strength_strong">#ffa3e08c</color>
+
+    <!-- Chart market -->
+    <color name="chart_bg">#FF121212</color>
+    <color name="chart_grid">#33FFFFFF</color>
+    <color name="chart_text">#FFE0E0E0</color>
+    <color name="chart_wick">#FF9AA0A6</color>
+    <color name="chart_last_price_line">#FF2EB5A5</color>
+    <color name="chart_last_price_label_bg">#FF2EB5A5</color>
+    <color name="last_label_text">#FFFFFFFF</color>
+    <color name="chart_selected_line">#80FFFFFF</color>
+    <color name="color_picker_border">#1FFFFFFF</color>
+
+    <color name="palette_price_text_custom">#000000</color>
+    <color name="palette_chart_grid_custom">#3A3A3A</color>
 </resources>
