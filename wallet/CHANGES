@@ -32,7 +32,8 @@ wallet/res/values-night/colors.xml
 wallet/res/values/dimens.xml
 - add code line 39->80
 
-
+wallet/AndroidManifest.xml
+- add code line 171->178
 
 
 
