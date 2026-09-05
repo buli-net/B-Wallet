@@ -20,6 +20,8 @@ wallet/res/menu/wallet_options.xml
 wallet/res/values/strings.xml
 - add code line 489->618
 
+wallet/src/wallet/ui/WalletActivity.java
+- add code line 42, 309->314
 
 
 
@@ -94,7 +96,7 @@ line 345->350
 - add code line 178,179
 
 - wallet/src/wallet/ui/WalletActivity.java
-- add code line 54, 264->268, 340->344, 502->509
+- add code line 55, 265->269, 347->351, 515->522
 
 ------------------------------------------------------------------
 
