@@ -52,7 +52,7 @@ wallet/res/values/strings.xml
 line 460->487
 
 wallet/res/menu/wallet_options.xml
-line 81->92
+line 95->106
 
 wallet/AndroidManifest.xml
 line 221->234
