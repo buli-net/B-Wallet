@@ -73,7 +73,7 @@ wallet/res/menu/wallet_options.xml
 line 95->106
 
 wallet/AndroidManifest.xml
-line 221->234
+line 230->241
 
 wallet/src/wallet/ui/WalletActivity.java
 line 352->357
@@ -157,7 +157,7 @@ line 352->357
 
 + Fix theme ui setting bug light/dark
 
-- wallet/AndroidManifest.xml [ add line 186, <!-- line 187 --> ]
+- wallet/AndroidManifest.xml [ add line 195, <!-- line 196 --> ]
 - wallet/res/values-night/styles.xml [ add code line 56->99 ]
 - wallet/res/values/styles.xml [ add code line 130->175 ]
 
