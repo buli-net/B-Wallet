@@ -83,7 +83,7 @@ line 345->350
 + Active donate menu
 
 - wallet/res/menu/wallet_options.xml
-- Add code line 101->105
+- Add code line 115->119
 
 - wallet/src/wallet/Constants.java
 - // line 176,177
