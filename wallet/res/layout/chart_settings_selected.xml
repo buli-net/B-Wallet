@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/default_top_padding"
+    android:paddingBottom="@dimen/default_bottom_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_selected_line_color"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <View
+            android:id="@+id/viewSelectedLine"
+            android:layout_width="@dimen/color_picker_size"
+            android:layout_height="@dimen/color_picker_size"
+            android:background="@drawable/color_picker_border"
+            android:tag="@color/chart_selected_line"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbSelectedW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vol_setting_padding_vertical"
+        android:text="@string/chart_selected_line_width"
+        android:textSize="@dimen/vol_label_text_size" />
+
+    <SeekBar
+        android:id="@+id/sbSelectedWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:progress="3" />
+
+    <TextView
+        android:id="@+id/lbSelectedAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vol_setting_padding_vertical"
+        android:text="@string/chart_selected_line_alpha"
+        android:textSize="@dimen/vol_label_text_size" />
+
+    <SeekBar
+        android:id="@+id/sbSelectedAlpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:progress="80" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vol_setting_padding_vertical"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_selected_line_dashed"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <Switch
+            android:id="@+id/swSelectedDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

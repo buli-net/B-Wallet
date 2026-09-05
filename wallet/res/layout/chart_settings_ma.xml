@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/vol_setting_padding_vertical"
+    android:paddingBottom="@dimen/vol_setting_padding_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/vol_setting_padding_vertical"
+        android:text="@string/chart_settings_ma"
+        android:textSize="@dimen/vol_label_text_size"
+        android:textStyle="bold" />
+
+    <!-- DEFAULT MA - from layout, no hardcode in Java -->
+    <TextView
+        android:id="@+id/tvDefMaPeriods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5,10,50"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDefMaColors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#FF8000,#2196F3,#E91E63"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_ma_popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
+
+    <Button
+        android:id="@+id/btn_add_ma"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_button_height"
+        android:layout_marginTop="@dimen/vol_setting_padding_vertical"
+        android:text="@string/add_ma"
+        android:textAllCaps="false" />
+
+    <!-- MA Line Width - DỜI TỪ chart_options SANG ĐÂY -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical"
+        android:layout_marginTop="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:id="@+id/lbMaW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chart_ma_line_width"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <SeekBar
+            android:id="@+id/sbMaW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="2" />
+    </LinearLayout>
+
+</LinearLayout>

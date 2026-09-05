@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/vol_setting_padding_vertical"
+    android:paddingBottom="@dimen/vol_setting_padding_vertical"
+    android:paddingStart="@dimen/default_price_text_margin"
+    android:paddingEnd="@dimen/default_price_text_margin">
+
+    <TextView
+        android:layout_width="@dimen/vol_value_width"
+        android:layout_height="wrap_content"
+        android:text="@string/ma"
+        android:textSize="@dimen/vol_label_text_size"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <EditText
+        android:id="@+id/et_period"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/default_button_height"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorSecondary"
+        android:textSize="@dimen/default_text_size" />
+
+    <View
+        android:id="@+id/view_color"
+        android:layout_width="@dimen/color_picker_size"
+        android:layout_height="@dimen/color_picker_size"
+        android:layout_marginStart="@dimen/default_popup_padding"
+        android:layout_marginEnd="@dimen/default_popup_padding"
+        android:background="@drawable/color_picker_border" />
+
+    <TextView
+        android:id="@+id/btn_delete"
+        android:layout_width="@dimen/default_button_height"
+        android:layout_height="@dimen/default_button_height"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:text="@string/delete"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/vol_label_text_size" />
+
+</LinearLayout>

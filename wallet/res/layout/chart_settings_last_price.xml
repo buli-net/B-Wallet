@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/vol_setting_padding_vertical"
+    android:paddingBottom="@dimen/vol_setting_padding_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/vol_setting_padding_vertical"
+        android:text="@string/chart_last_price_section"
+        android:textSize="@dimen/vol_label_text_size"
+        android:textStyle="bold" />
+
+    <!-- Show Last Price -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_show_last_price"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <Switch
+            android:id="@+id/swLast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+    </LinearLayout>
+
+    <!-- Last Price Color -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_last_price_color"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <View
+            android:id="@+id/viewLastColor"
+            android:layout_width="@dimen/color_picker_size"
+            android:layout_height="@dimen/color_picker_size"
+            android:background="@drawable/color_picker_border"
+            android:tag="@color/chart_last_price_line" />
+    </LinearLayout>
+
+    <!-- Price Text Size -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:id="@+id/lbTxtSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chart_price_text_size"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <SeekBar
+            android:id="@+id/sbTxtSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="32"
+            android:progress="18" />
+    </LinearLayout>
+
+    <!-- Price Text Color -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_price_text_color"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <View
+            android:id="@+id/viewTxtColor"
+            android:layout_width="@dimen/color_picker_size"
+            android:layout_height="@dimen/color_picker_size"
+            android:background="@drawable/color_picker_border"
+            android:tag="@color/chart_text" />
+    </LinearLayout>
+
+    <!-- Last Line Width -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:id="@+id/lbLastW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chart_last_line_width"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <SeekBar
+            android:id="@+id/sbLastW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="2" />
+    </LinearLayout>
+
+    <!-- Dashed Line -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_last_line_dashed"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <Switch
+            android:id="@+id/swDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+    </LinearLayout>
+
+</LinearLayout>

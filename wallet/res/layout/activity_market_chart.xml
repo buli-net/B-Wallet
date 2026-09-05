@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/default_screen_padding"
+        android:paddingEnd="@dimen/default_screen_padding"
+        android:paddingTop="@dimen/vol_setting_padding_vertical"
+        android:paddingBottom="@dimen/vol_setting_padding_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textCurrentPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/chart_price_default"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/default_price_large_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textChange24h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_small_margin"
+                    android:singleLine="true"
+                    android:text="@string/chart_change_default"
+                    android:textSize="@dimen/default_text_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textWalletBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_tiny_margin"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/chart_balance_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_tiny_margin"
+                android:singleLine="true"
+                android:text="@string/chart_countdown_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textFiat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_fiat_default"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textHigh24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/chart_high_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textLow24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/chart_low_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textVolBtc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/chart_vol_base_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textVolFiat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/chart_vol_quote_default"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/font_size_tiny" />
+
+            <TextView
+                android:id="@+id/textVol24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_vol_default"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textMaLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_ma_label_margin_top"
+        android:layout_marginBottom="@dimen/default_ma_label_margin_bottom"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/default_screen_padding"
+        android:paddingEnd="@dimen/default_screen_padding"
+        android:paddingBottom="@dimen/vol_setting_padding_vertical"
+        android:singleLine="true"
+        android:text="@string/chart_ma_default"
+        android:textSize="@dimen/font_size_tiny" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/default_price_text_margin"
+        android:paddingBottom="@dimen/default_price_text_margin">
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/chipGroupTimeframe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/default_chip_padding_start"
+                android:paddingEnd="@dimen/default_chip_padding_end" />
+
+        </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/btnChartSettings"
+            android:layout_width="@dimen/default_icon_button_size"
+            android:layout_height="@dimen/default_icon_button_size"
+            android:layout_marginEnd="@dimen/default_price_text_margin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/chart_settings_title"
+            android:padding="@dimen/vol_setting_padding_vertical"
+            android:src="@drawable/ic_chart_settings" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <wallet.ui.MarketChartView
+            android:id="@+id/marketChartView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/popupCandleDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vol_setting_padding_vertical"
+            android:background="@color/chart_bg"
+            android:elevation="8dp"
+            android:orientation="vertical"
+            android:padding="@dimen/default_popup_padding"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/popupTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_popup_time_default"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/default_popup_time_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/popupOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_price_text_margin"
+                android:text="@string/chart_popup_open_default"
+                android:textSize="@dimen/default_popup_size" />
+
+            <TextView
+                android:id="@+id/popupHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_popup_high_default"
+                android:textSize="@dimen/default_popup_size" />
+
+            <TextView
+                android:id="@+id/popupLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_popup_low_default"
+                android:textSize="@dimen/default_popup_size" />
+
+            <TextView
+                android:id="@+id/popupClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_popup_close_default"
+                android:textSize="@dimen/default_popup_size" />
+
+            <TextView
+                android:id="@+id/popupVolume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chart_popup_volume_default"
+                android:textSize="@dimen/default_popup_size" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/vol_setting_padding_vertical"
+    android:paddingBottom="@dimen/vol_setting_padding_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/vol_setting_padding_vertical"
+        android:text="@string/chart_last_price_label_section"
+        android:textSize="@dimen/vol_label_text_size"
+        android:textStyle="bold" />
+
+    <!-- Label Bg -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_last_price_label_bg"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <View
+            android:id="@+id/viewLabelBg"
+            android:layout_width="@dimen/color_picker_size"
+            android:layout_height="@dimen/color_picker_size"
+            android:background="@drawable/color_picker_border"
+            android:tag="@color/chart_last_price_label_bg" />
+    </LinearLayout>
+
+    <!-- Label Text Color -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chart_last_price_label_text_color"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <View
+            android:id="@+id/viewLabelTextColor"
+            android:layout_width="@dimen/color_picker_size"
+            android:layout_height="@dimen/color_picker_size"
+            android:background="@drawable/color_picker_border"
+            android:tag="@color/last_label_text" />
+    </LinearLayout>
+
+    <!-- Label Size -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/vol_setting_padding_vertical">
+
+        <TextView
+            android:id="@+id/lbLabelSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chart_last_price_label_text_size"
+            android:textSize="@dimen/vol_label_text_size" />
+
+        <SeekBar
+            android:id="@+id/sbLabelSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="32"
+            android:progress="19" />
+    </LinearLayout>
+
+</LinearLayout>

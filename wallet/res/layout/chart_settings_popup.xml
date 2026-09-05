@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/default_popup_padding"
+        android:paddingTop="@dimen/default_top_padding"
+        android:paddingBottom="@dimen/default_bottom_padding"
+        android:background="@color/chart_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chart_settings_title"
+            android:textSize="@dimen/vol_label_text_size"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/vol_setting_padding_vertical"
+            android:paddingBottom="@dimen/vol_setting_padding_vertical" />
+
+        <!-- Candle Settings -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerCandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_settings_candle"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowCandle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerCandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_candle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- MA Settings -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerMa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_settings_ma"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowMa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerMa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_ma" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Volume MA - NEW SECTION - separate, no hardcode -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerVolMa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_vol_ma_section"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowVolMa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerVolMa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_vol_ma" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Grid Settings - renamed from Chart Options, contains Show Grid + Grid Color -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/grid_settings_title"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowGrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_grid" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Last Price Line -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerLastPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_last_price_section"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowLastPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerLastPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_last_price" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Current Price Label -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_last_price_label_section"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_label" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Selected / Crosshair Line -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/headerSelected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vol_setting_padding_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/chart_selected_line_section"
+                    android:textSize="@dimen/vol_label_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/arrowSelected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arrow_collapsed"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerSelected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_popup_padding"
+                android:paddingEnd="@dimen/default_popup_padding"
+                android:visibility="gone">
+
+                <include layout="@layout/chart_settings_selected" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_grid_width"
+                android:layout_marginVertical="@dimen/vol_setting_padding_vertical"
+                android:background="@color/chart_grid" />
+        </LinearLayout>
+
+        <!-- Apply and Reset -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/default_popup_padding"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/default_price_axis_width"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/vol_setting_padding_vertical"
+                android:text="@string/chart_settings_apply"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/default_price_axis_width"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/vol_setting_padding_vertical"
+                android:text="@string/chart_settings_reset"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
