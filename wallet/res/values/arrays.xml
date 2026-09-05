@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="fiat_codes">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>VND</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>CNY</item>
+        <item>KRW</item>
+        <item>INR</item>
+        <item>RUB</item>
+        <item>TRY</item>
+        <item>UAH</item>
+        <item>THB</item>
+        <item>PHP</item>
+        <item>ILS</item>
+        <item>PLN</item>
+        <item>RON</item>
+        <item>BGN</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>SEK</item>
+        <item>NOK</item>
+        <item>HUF</item>
+        <item>CHF</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>NZD</item>
+        <item>SGD</item>
+        <item>HKD</item>
+        <item>TWD</item>
+        <item>MYR</item>
+        <item>IDR</item>
+        <item>BRL</item>
+        <item>MXN</item>
+    </string-array>
+
+    <string-array name="fiat_symbols">
+        <item>$</item>
+        <item>€</item>
+        <item>₫</item>
+        <item>£</item>
+        <item>¥</item>
+        <item>¥</item>
+        <item>₩</item>
+        <item>₹</item>
+        <item>₽</item>
+        <item>₺</item>
+        <item>₴</item>
+        <item>฿</item>
+        <item>₱</item>
+        <item>₪</item>
+        <item>zł</item>
+        <item>lei</item>
+        <item>лв</item>
+        <item>Kč</item>
+        <item>kr</item>
+        <item>kr</item>
+        <item>kr</item>
+        <item>Ft</item>
+        <item>CHF</item>
+        <item>A$</item>
+        <item>C$</item>
+        <item>NZ$</item>
+        <item>S$</item>
+        <item>HK$</item>
+        <item>NT$</item>
+        <item>RM</item>
+        <item>Rp</item>
+        <item>R$</item>
+        <item>$</item>
+    </string-array>
+
+    <string-array name="interval_values">
+        <item>1m</item>
+        <item>3m</item>
+        <item>5m</item>
+        <item>15m</item>
+        <item>30m</item>
+        <item>1h</item>
+        <item>2h</item>
+        <item>4h</item>
+        <item>6h</item>
+        <item>12h</item>
+        <item>1d</item>
+        <item>1w</item>
+        <item>1M</item>
+    </string-array>
+
+</resources>
