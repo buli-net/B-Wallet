@@ -29,6 +29,9 @@ wallet/res/values/colors.xml
 wallet/res/values-night/colors.xml
 - add code line 26->38
 
+wallet/res/values/dimens.xml
+- add code line 39->80
+
 
 
 
