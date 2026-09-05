@@ -168,6 +168,15 @@
             android:label="@string/address_book_activity_title"
             android:theme="@style/My.Theme" />
 
+        <!-- maket chart -->
+    <activity
+            android:name="wallet.ui.MarketChartActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
+            android:label="@string/market_chart_title"
+            android:parentActivityName="wallet.ui.WalletActivity"
+            android:theme="@style/My.Preference" />
+        <!-- end chart -->
+        
         <activity
             android:name="wallet.ui.ExchangeRatesActivity"
             android:configChanges="keyboard|keyboardHidden"
