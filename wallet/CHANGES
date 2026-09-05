@@ -6,7 +6,9 @@
 ================
 
 + Move Exchange Rates -> menu Market
+
 - Edit file
+
 wallet/res/menu/wallet_options.xml
 - <!-- line 64->68 -->
 - add code line 69->80
@@ -35,6 +37,8 @@ wallet/res/values/dimens.xml
 wallet/AndroidManifest.xml
 - add code line 171->178
 
+-------
+- Create file
 
 
 ================
