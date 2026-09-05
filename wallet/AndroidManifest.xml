@@ -228,7 +228,6 @@
             android:windowSoftInputMode="adjustResize" />
 
           <!-- Web Browser Activity -->
-
         <activity
             android:name="wallet.ui.BrowserActivity"
             android:parentActivityName="wallet.ui.WalletActivity"
@@ -239,7 +238,6 @@
             android:launchMode="singleTop"
             android:label="@string/menu_web_browser"
             android:theme="@style/My.Preference" />
-
          <!-- end-->
         
         <provider
