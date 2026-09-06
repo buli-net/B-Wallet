@@ -103,7 +103,7 @@ wallet/AndroidManifest.xml
 line 230->241
 
 wallet/src/wallet/ui/WalletActivity.java
-line 352->357
+line 356->361
 
 ================
 * - 15/08/2026 |
@@ -135,7 +135,7 @@ line 352->357
 - add code line 178,179
 
 - wallet/src/wallet/ui/WalletActivity.java
-- add code line 55, 265->269, 347->351, 515->522
+- add code line 55, 265->269, 351->355, 519->526
 
 ------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ line 352->357
 - Add code file wallet/res/xml/file_provider.xml [ add code line 9-->13 ]
 - Add code file wallet/AndroidManifest.xml [add code line 91-->98]
 - Add code file wallet/res/values/strings.xml [add code line 383 --> 458]
-- Add code file wallet/src/wallet/ui/WalletActivity.java [ add code line 311--> 315]
+- Add code file wallet/src/wallet/ui/WalletActivity.java [ add code line 322--> 326]
 - Add code file wallet/res/menu/wallet_options.xml [add code line 89-->94]
 
 =====================================================================
