@@ -10,20 +10,20 @@
 - Edit file
 
 wallet/res/menu/wallet_options.xml
-- <!-- line 64->68 -->
-- add code line 69->80
+- <!-- line 63->68 -->
+- add code line 69->83
 
 + Add menu Market -> Frice Chart
 - Edit file 
 wallet/res/menu/wallet_options.xml
 - <!-- line 63->68 -->
-- add code line 69->79
+- add code line 69->83
 
 wallet/res/values/strings.xml
 - add code line 489->618
 
 wallet/src/wallet/ui/WalletActivity.java
-- add code line 42, 309->314
+- add code line 42, 270->273, 313->318
 
 wallet/res/values/colors.xml
 - add code line 50->101
