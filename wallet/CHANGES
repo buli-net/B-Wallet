@@ -97,7 +97,7 @@ wallet/res/values/strings.xml
 line 460->487
 
 wallet/res/menu/wallet_options.xml
-line 95->106
+line 99->110
 
 wallet/AndroidManifest.xml
 line 230->241
@@ -128,7 +128,7 @@ line 352->357
 + Active donate menu
 
 - wallet/res/menu/wallet_options.xml
-- Add code line 115->119
+- Add code line 119->123
 
 - wallet/src/wallet/Constants.java
 - // line 176,177
@@ -167,7 +167,7 @@ line 352->357
 - Add code file wallet/AndroidManifest.xml [add code line 91-->98]
 - Add code file wallet/res/values/strings.xml [add code line 383 --> 458]
 - Add code file wallet/src/wallet/ui/WalletActivity.java [ add code line 311--> 315]
-- Add code file wallet/res/menu/wallet_options.xml [add code line 85-->90]
+- Add code file wallet/res/menu/wallet_options.xml [add code line 89-->94]
 
 =====================================================================
 ----------------------------------------------------------------------
