@@ -85,6 +85,22 @@ public final class Constants {
         else
             ENABLE_EXCHANGE_RATES = false;
     }
+        /** Enable switch for fetching and showing of market chart */
+        public static final boolean ENABLE_MARKET_CHART;
+    static {
+        if (NETWORK_PARAMETERS.getId().equals(MainNetParams.get().getId()))
+            ENABLE_MARKET_CHART = true;
+        else
+            ENABLE_MARKET_CHART = false;
+    }
+   /** Enable switch for fetching and showing of donate */
+    public static final boolean ENABLE_DONATE;
+    static {
+        if (NETWORK_PARAMETERS.getId().equals(MainNetParams.get().getId()))
+            ENABLE_DONATE = true;
+        else
+            ENABLE_DONATE = false;
+    }
     /** Enable switch for sweeping of paper wallets */
     public static final boolean ENABLE_SWEEP_WALLET = true;
     /** Enable switch for browsing to block explorers */
