@@ -262,15 +262,12 @@ public final class WalletActivity extends AbstractWalletActivity {
                         && res.getBoolean(R.bool.show_exchange_rates_option);
                 menu.findItem(R.id.wallet_options_exchange_rates).setVisible(showExchangeRatesOption);
                 menu.findItem(R.id.wallet_options_sweep_wallet).setVisible(Constants.ENABLE_SWEEP_WALLET);
-           // donate 2/4
-                menu.findItem(R.id.wallet_options_donate).setVisible(
-                    Constants.NETWORK_PARAMETERS.getId().equals(BitcoinNetwork.ID_MAINNET)
-                );
-           // end donate 2/4
-           // market - only mainnet 2/3
-                final boolean isMainnet = Constants.NETWORK_PARAMETERS.getId().equals(BitcoinNetwork.ID_MAINNET);
-                menu.findItem(R.id.menu_market_parent).setVisible(isMainnet);
-           //end market 2/3
+                // donate 2/4
+                menu.findItem(R.id.wallet_options_donate).setVisible(Constants.ENABLE_DONATE);
+               // end donate 2/4
+               // market - only mainnet 2/3
+               menu.findItem(R.id.menu_market_parent).setVisible(Constants.ENABLE_MARKET_CHART);
+               //end market 2/3
                 final String externalStorageState = Environment.getExternalStorageState();
                 final boolean enableRestoreWalletOption = Environment.MEDIA_MOUNTED.equals(externalStorageState)
                         || Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
