@@ -135,7 +135,7 @@ line 356->361
 - add code line 178,179
 
 - wallet/src/wallet/ui/WalletActivity.java
-- add code line 55, 265->269, 351->355, 519->526
+- add code line 55, 266->268, 351->355, 519->526
 
 ------------------------------------------------------------------
 
