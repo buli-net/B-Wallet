@@ -25,6 +25,9 @@ wallet/res/values/strings.xml
 wallet/src/wallet/ui/WalletActivity.java
 - add code line 42, 270->273, 313->318
 
+wallet/src/wallet/Constants.java
+- add code line 88->95
+
 wallet/res/values/colors.xml
 - add code line 50->101
 
@@ -131,8 +134,8 @@ line 356->361
 - Add code line 119->123
 
 - wallet/src/wallet/Constants.java
-- // line 176,177
-- add code line 178,179
+- // line 193
+- add code line 96->103, 194
 
 - wallet/src/wallet/ui/WalletActivity.java
 - add code line 55, 266->268, 351->355, 519->526
@@ -203,7 +206,7 @@ line 356->361
 
 + update link check version wallet.schildbach.de/version -> buli-net.github.io/version
 
-- wallet/src/wallet/Constants.java [ // line 153. add code line 154 ]
+- wallet/src/wallet/Constants.java [ // line 169. add code line 170 ]
 - wallet/res/xml/network_security_config.xml [ // line 14. add code line 15 ]
 - wallet/AndroidManifest.xml [ // line 70. add code line 71 ]
 
@@ -211,20 +214,20 @@ line 356->361
 
 + update link check fees wallet.schildbach.de/fees ->. buli-net.github.io/fees
 
-- wallet/src/wallet/Constants.java [ // line 157. add code line 158 ]
+- wallet/src/wallet/Constants.java [ // line 173. add code line 174 ]
 
 -------------------------------------------------------------------------
 
 + update email report: bitcoin.wallet.developers@gmail.com --> hvlrcb@gmail.com
 
-- wallet/src/wallet/Constants.java [ // line 180, add code line 181]
+- wallet/src/wallet/Constants.java [ // line 197, add code line 198]
 
 --------------------------------------------------------------------------
 
 + update binary url
 - wallet/src/wallet/Constants.java
-  . // line 205
-  . Add code line 206
+  . // line 222
+  . Add code line 223
 
 =================END=================================END=========================================END====================
 
