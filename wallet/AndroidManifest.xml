@@ -171,7 +171,7 @@
         <!-- maket chart -->
     <activity
             android:name="wallet.ui.MarketChartActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
+            android:configChanges="keyboard|keyboardHidden"
             android:label="@string/market_chart_title"
             android:parentActivityName="wallet.ui.WalletActivity"
             android:theme="@style/My.Preference" />
